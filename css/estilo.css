@@ -1,0 +1,17 @@
+body { 
+  background-color: #000;
+  color: #fff;
+  font-family: poppins, sans-serif;
+}
+
+section img {
+  border-radius: 50% 50% 0 0/ 60% 60% 0 0
+}
+
+.btn-group .dropdown-menu {
+  min-width: 160px;
+}
+
+.btn {
+  border-radius: 30px;
+}
