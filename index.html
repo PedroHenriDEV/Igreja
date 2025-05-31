@@ -2,97 +2,228 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIRE</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIRE</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/estilo.css" type="text/css">
+  <link rel="stylesheet" href="css/estilo.css" type="text/css" />
+  <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
+
+  <style>
+
+  </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
-  <!-- Botões centralizados bonitos e responsivos -->
-<div class="container py-4">
-  <div class="d-flex justify-content-center flex-wrap gap-2 ">
+  <!-- DIV onde o fundo animado será aplicado -->
+  <div id="fundo-animado"></div>
 
-    <a href="contato.html" class="btn text-white fw-bold">Contato</a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute top-0 start-0 w-100"
+    style="z-index: 10;">
+    <div class="container">
+      <!-- Botão hambúrguer -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <a href="celulas.html" class="btn text-white fw-bold">Células</a>
+      <!-- Itens da navbar -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav gap-3 fw-bold text-white">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="contato.html">Contato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="celulas.html">Células</a>
+          </li>
 
-    <!-- Dropdown Cultos -->
-    <div class="btn-group">
-      <a class="btn text-white fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-        Cultos
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark">
-        <li><a class="dropdown-item fw-bold" href="louvor.html">Extraordinário</a></li>
-        <li><a class="dropdown-item fw-bold" href="danca.html">Família</a></li>
-      </ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Cultos
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item fw-bold" href="louvor.html">Extraordinário</a></li>
+              <li><a class="dropdown-item fw-bold" href="danca.html">Família</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white" href="eventos.html">Eventos</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Ministérios
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item fw-bold" href="louvor.html">Louvor</a></li>
+              <li><a class="dropdown-item fw-bold" href="danca.html">Dança</a></li>
+              <li><a class="dropdown-item fw-bold" href="kids.html">Kids</a></li>
+              <li><a class="dropdown-item fw-bold" href="diaconato.html">Diaconato</a></li>
+              <li><a class="dropdown-item fw-bold" href="midia.html">Mídia</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <a href="eventos.html" class="btn text-white fw-bold">Eventos</a>
-
-    <!-- Dropdown Ministérios -->
-    <div class="btn-group">
-      <a class="btn text-white fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-        Ministérios
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark">
-        <li><a class="dropdown-item fw-bold" href="louvor.html">Louvor</a></li>
-        <li><a class="dropdown-item fw-bold" href="danca.html">Dança</a></li>
-        <li><a class="dropdown-item fw-bold" href="kids.html">Kids</a></li>
-        <li><a class="dropdown-item fw-bold" href="diaconato.html">Diaconato</a></li>
-        <li><a class="dropdown-item fw-bold" href="midia.html">Mídia</a></li>
-      </ul>
-    </div>
-
-</div>
-</nav>
 
   <!-- Hero Section -->
-  <section class="container py-5 d-flex flex-column flex-md-row align-items-center justify-content-between gap-5">
-    <div class="rounded overflow-hidden shadow" style="max-width: 500px;">
-      <img src="imagens/download.png" alt="Imagem do culto" class="img-fluid">
+  <section
+    class="container py-5 content d-flex flex-column flex-md-row align-items-center justify-content-between gap-5">
+    <div class="rounded overflow-hidden shadow" style="max-width: 400px;">
+      <img src="imagens/download.png" alt="Imagem do culto" class="img-fluid" />
     </div>
     <div class="text-md-start text-center">
-      <!-- Substitua com a logo se quiser -->
       <h1 class="display-6 fw-bold text-uppercase">Ministério</h1>
-      <h3 class=" display-6 text-uppercase"> Internacional da</h3>
+      <h3 class="display-6 text-uppercase">Internacional da</h3>
       <h1 class="display-6 fw-bold text-uppercase">Renovação</h1>
-       <br> <br>
-
-
-      <h2 class=" text-white mb-3"><strong>Visão Celular</strong></h2>
-  
-      <p class="mb-4">A ferramenta que usamos para Ganhar, Consolidar, Discipular e Enviar.</p>
-      
+      <br /><br />
+      <h2 class="text-white mb-3"><strong>Visão Celular</strong></h2>
+      <p class="mb-2 fw-bold">A ferramenta que usamos para Ganhar, Consolidar, Discipular e Enviar.</p>
     </div>
   </section>
 
+  <div id="cultosCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
+      <!-- Slide 1  -->
+      <div class="carousel-item active">
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-start p-4">
+          <img src="imagens/sobre2.jpg" class="d-block img-fluid rounded shadow" style="max-width: 300px;"
+            alt="Imagem do culto de Páscoa" />
+          <div class="ms-md-4 mt-4 mt-md-0">
+            <h3 class="text-white fw-bold"> Culto de Páscoa</h3>
+          </div>
+        </div>
+      </div>
 
+      <div class="carousel-item">
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-start p-4">
+          <video width="250" muted autoplay loop playsinline class=" rounded shadow" alt="Video do culto">
+            <source src="imagens/video1.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+          <div class="ms-md-4 mt-4 mt-md-0">
+            <h3 class="text-white fw-bold"> Nosso Culto da Família</h3>
+          </div>
+        </div>
+      </div>
 
+      <div class="carousel-item">
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-start p-4">
+          <video width="250" muted autoplay loop playsinline class=" rounded shadow" alt="Video do culto">
+            <source src="imagens/Encontro2025.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+          <div class="ms-md-4 mt-4 mt-md-0">
+            <h3 class="text-white fw-bold">Primeiro Encontro 2025</h3>
+          </div>
+        </div>
+      </div>
 
+      <div class="carousel-item">
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-start p-4">
+          <video width="250" muted autoplay loop playsinline class=" rounded shadow" alt="Video do culto">
+            <source src="imagens/CultoEX.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+          <div class="ms-md-4 mt-4 mt-md-0">
+            <h3 class="text-white fw-bold">Culto da Extraordinario</h3>
+          </div>
+        </div>
+      </div>
 
+      <div class="carousel-item">
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-start p-4">
+          <img src="imagens/sobre2.jpg" class="d-block img-fluid rounded shadow" style="max-width: 400px;"
+            alt="Imagem do culto" />
+          <div class="ms-md-4 mt-4 mt-md-0">
+            <h3 class="text-white fw-bold"> Culto de Páscoa</h3>
+          </div>
+        </div>
+      </div>
 
+      <!-- Controles  -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#cultosCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
 
+      <button class="carousel-control-next" type="button" data-bs-target="#cultosCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+    </div>
 
+  </div>
 
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center text-md-start">
+      <div class="row">
 
+        <!-- Logo e Nome  -->
+        <div class="col-md-4 mb-4 text-center">
+          <img src="imagens/download.png" alt="Logo da MIRE" style="max-width: 120px;" class="mb-2">
+          <h5 class="fw-bold">MIRE</h5>
+          <p class="mb-0">Ministério Internacional da Renovação</p>
+        </div>
 
-    <!-- Script JS  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-        crossorigin="anonymous"></script>
+        <!-- Contato e Endereço  -->
+        <div class="col-md-4 mb-4">
+          <h6 class="fw-bold">Endereço</h6>
+          <p class="mb-0">Rua Exemplo, 123 - Bairro - Cidade/UF</p>
+          <h6 class="fw-bold mt-3">Contato</h6>
+          <p class="mb-0">Telefone: (00) 1234-5678</p>:
+        </div>
 
+        <!-- Redes Sociais -->
+        <div class="col-md-4 mb-4">
+          <h6 class="fw-bold">Siga-nos</h6>
+          <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i>Instagram</a>
+        </div>
+      </div>
+      <hr class="border-light" />
+      <p class="text-center mb-0">&copy; 2025 MIRE - Todos os direitos reservados</p>
+    </div>
+    </div>
+    </div>
+  </footer>
 
+  <!-- Scripts Bootstrap e Vanta -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+  <script>
+    VANTA.NET({
+      el: "#fundo-animado",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      backgroundColor: 0x333333,  // cinza escuro
+      color: 0xffffff,            // linhas brancas
+      maxDistance: 20.00,
+      spacing: 15.00,
+      showDots: false
+    });
+  </script>
 </body>
 
 </html>
