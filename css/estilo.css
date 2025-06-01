@@ -31,6 +31,7 @@ section img {
       width: 100vw;
       height: 100vh;
       z-index: -1;
+      opacity: 0.3;
     }
 
     .content {
@@ -74,7 +75,7 @@ section.container > div.text-md-start {
   /* Ajusta os links para ficarem bem legíveis no fundo cinza */
   .navbar-collapse.show .nav-link,
   .navbar-collapse.show .dropdown-item {
-    color: #000 !important;
+    color: white !important;
   }
 
   
@@ -117,3 +118,66 @@ section.container > div.text-md-start {
     0%, 100% { opacity: 0.4; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.8); }
 }
+
+
+footer a:hover {
+  color: #0d6efd; /* azul padrão Bootstrap */
+  text-decoration: none;
+}
+
+h1, .display-4 {
+  font-size: 3rem; /* exemplo para título principal */
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+p.lead {
+  font-size: 1.25rem;
+}
+
+h1, h2, h3 {
+  font-weight: 700; /* negrito forte */
+}
+
+p, span {
+  font-weight: 400; /* normal */
+}
+
+h1 {
+  letter-spacing: 2px;
+  text-transform: uppercase; /* para mais impacto */
+}
+
+h2 {
+  letter-spacing: 1.5px;
+}
+
+h1, h2 {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+
+
+/* Cards  */
+
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card {
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: white;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
