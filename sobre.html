@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="css/estilo.css" type="text/css" />
   <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -21,136 +27,240 @@
     <div id="fundo-animado" class="position-absolute top-0 start-0 w-100 h-100 z-n1"></div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute top-0 start-0 w-100"
-      style="z-index: 10;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
       <div class="container">
-        <!-- Botão hambúrguer -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand neon-logo" href="index.html">
+          <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Itens da navbar -->
-        <div class="collapse navbar-collapse justify-content-center bg-dark" id="navbarSupportedContent">
-          <ul class="navbar-nav gap-3 fw-bold text-white">
-            <li class="nav-item"><a class="nav-link text-white" href="celulas.html">Células</a></li>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav gap-4">
+            <li class="nav-item">
+              <a class="nav-link active" href="celulas.html">
+                <i class="bi bi-people"></i>
+                Células
+              </a>
+            </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Cultos</a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item fw-bold" href="louvor.html">Extraordinário</a></li>
-                <li><a class="dropdown-item fw-bold" href="danca.html">Família</a></li>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-calendar-heart"></i>
+                Cultos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="louvor.html">
+                    <i class="bi bi-star"></i>
+                    Extraordinário
+                  </a></li>
+                <li><a class="dropdown-item" href="danca.html">
+                    <i class="bi bi-house-heart"></i>
+                    Família
+                  </a></li>
               </ul>
             </li>
-            <li class="nav-item"><a class="nav-link text-white" href="eventos.html">Eventos</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="eventos.html">
+                <i class="bi bi-calendar-event"></i>
+                Eventos
+              </a>
+            </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                data-bs-toggle="dropdown">Ministérios</a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item fw-bold" href="louvor.html">Louvor</a></li>
-                <li><a class="dropdown-item fw-bold" href="danca.html">Dança</a></li>
-                <li><a class="dropdown-item fw-bold" href="kids.html">Kids</a></li>
-                <li><a class="dropdown-item fw-bold" href="diaconato.html">Diaconato</a></li>
-                <li><a class="dropdown-item fw-bold" href="midia.html">Mídia</a></li>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-heart"></i>
+                Ministérios
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="louvor.html">
+                    <i class="bi bi-music-note"></i>
+                    Louvor
+                  </a></li>
+                <li><a class="dropdown-item" href="danca.html">
+                    <i class="bi bi-person-arms-up"></i>
+                    Dança
+                  </a></li>
+                <li><a class="dropdown-item" href="kids.html">
+                    <i class="bi bi-balloon"></i>
+                    Kids
+                  </a></li>
+                <li><a class="dropdown-item" href="diaconato.html">
+                    <i class="bi bi-shield-check"></i>
+                    Diaconato
+                  </a></li>
+                <li><a class="dropdown-item" href="midia.html">
+                    <i class="bi bi-camera-video"></i>
+                    Mídia
+                  </a></li>
               </ul>
             </li>
-            <li class="nav-item"><a class="nav-link text-white" href="contato.html">Contato</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="contato.html">
+                <i class="bi bi-telephone"></i>
+                Contato
+              </a>
+            </li>
           </ul>
 
-          <!-- Botão Login -->
           <div class="d-flex ms-auto">
-            <a href="login.html" class="btn btn-outline-light rounded-pill fw-bold bi bi-person"> Login</a>
+            <a href="login.html" class="neon-btn">
+              <i class="bi bi-person"></i>
+              Login
+            </a>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-   <section class="container-fluid py-5 text-center">
-  <div class="container">
-    <div class="d-flex justify-content-center align-items-center mt-5 gap-3 flex-wrap">
-      <h1 class="display-6 fw-bold m-0">Sobre a igreja</h1>
-      <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
-    </div>
+    <section class="container-fluid py-5 text-center mt-5">
+      <div class="container">
+        <div class="d-flex justify-content-center align-items-center mt-5 gap-2 flex-wrap">
+          <h1 class="display-6 fw-bold m-0">Sobre a igreja</h1>
+          <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
+        </div>
 
-    <div class="section-divider"></div>
-  </div>
-</section>
+        <div class="section-divider"></div>
+      </div>
+    </section>
 
     <!-- Seção de Estatísticas -->
-    <section class="container py-5">
-      <div class="row text-center">
-        <div class="col-md-3 mb-4">
-          <div class="stats-number">24</div>
-          <h5>Anos de História</h5>
+    <section class="stats-section">
+      <h2 class="section-title">Nossa Jornada</h2>
+
+      <div class="stats-container">
+        <div class="stats-card">
+          <div class="stats-number" data-target="24">0</div>
+          <h5 class="stats-label">Anos de História</h5>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="stats-number">500+</div>
-          <h5>Membros</h5>
+
+        <div class="stats-card">
+          <div class="stats-number" data-target="300" data-plus="true">0</div>
+          <h5 class="stats-label">Membros</h5>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="stats-number">25</div>
-          <h5>Células Ativas</h5>
+
+        <div class="stats-card">
+          <div class="stats-number" data-target="27">0</div>
+          <h5 class="stats-label">Células Ativas</h5>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="stats-number">8</div>
-          <h5>Ministérios</h5>
+
+        <div class="stats-card">
+          <div class="stats-number" data-target="8">0</div>
+          <h5 class="stats-label">Ministérios</h5>
         </div>
       </div>
     </section>
 
-  <section class="container py-5">
-  <div class="card text-white bg-dark shadow"
-       style="background-image: url('imagens/download.png'); background-size: cover; background-position: center;">
-    <div class="card-body" style="background: rgba(0, 0, 0, 0.8); border: 1px solid white; border-radius: 15px;">
-      <h2 class="card-title text-center mb-4">Quem Somos?</h2>
-      <p class="card-text">
-        • Quem somos? O MIRE é uma comunidade de fé iniciada em 2001 que busca viver o evangelho de Cristo de forma
-        prática e relacional, estruturada em pequenos grupos chamados células, onde os membros se apoiam, crescem
-        espiritualmente e compartilham a mensagem de Cristo.
-      </p>
-      <p class="card-text">
-        • <strong>Visão:</strong> Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua
-        Palavra,
-        conduzindo pessoas à plena comunhão com Cristo e ao serviço ao próximo. Transmitindo as escrituras de forma
-        genuína, levantando um povo adorador, fazendo de cada membro um discípulo de Cristo e de cada casa uma
-        extensão
-        da igreja. Levando ao retorno da origem onde todos são a imagem e semelhança de Deus (Gn 1:26).
-      </p>
+    <section class="py-5 sobre-igreja">
+      <div class="container"> <!-- container para controlar largura -->
+        <div class="row align-items-center">
+          <!-- Coluna do texto -->
+          <div class="col-md-6 text-start lh-lg px-4">
+            <h2 class="fw-bold display-5">• Quem Somos?</h2>  <br> 
+            <p class="fs-3">
+              O MIRE é uma comunidade de fé iniciada em 2001<br>
+              que busca viver o evangelho de Cristo<br>
+              de forma prática e relacional,<br>
+              estruturada em pequenos grupos chamados células,<br>
+              onde os membros se apoiam, crescem espiritualmente<br>
+              e compartilham a mensagem de Cristo.
+            </p>
+          </div>
 
-      <h2 class="card-title text-center my-4">Missão, Valores e Propósito</h2>
+          <!-- Coluna da imagem -->
+          <div class="col-md-6 text-center">
+            <img src="imagens/Sobre.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
+          </div>
+        </div>
 
-      <p class="card-text">
-        • <strong>Missão:</strong> Direcionar pessoas a um relacionamento saudável com Deus e com o próximo,
-        fortalecendo o conhecimento das Escrituras e promovendo a transformação de vidas, sendo uma igreja renovada
-        pelo Espírito Santo.
-      </p>
-      <p class="card-text">
-        • <strong>Valores:</strong> Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando
-        crescer
-        de modo relevante para o Reino de Deus, através dos pilares: Ganhar, Consolidar, Discipular e Enviar.
-      </p>
-      <p class="card-text">
-        • <strong>Propósito:</strong> Ser uma comunidade acolhedora e discipuladora, onde cada pessoa encontra
-        suporte,
-        crescimento espiritual e encorajamento para viver o evangelho. Multiplicamos vidas transformadas por Cristo,
-        levando amor e esperança ao mundo. O MIRE nasceu em Belo Horizonte em 2001, com o objetivo de promover e
-        contribuir com o desenvolvimento pessoal e social.
-      </p>
+        <!-- Coluna da imagem -->
+        <div class="row align-items-center">
+          <!-- Coluna da imagem -->
+          <div class="col-md-6 text-center">
+            <img src="imagens/Pascoa.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
+          </div>
 
-      <div class="text-center mt-4">
-        <strong class="fs-5 fst-italic">"MIRE, simples em ser e grande em acolher."</strong>
-      </div>
+          <!-- Coluna do texto -->
+          <div class="col-md-6 text-end lh-lg px-4">
+            <h2 class="fw-bold display-5">• Visão</h2>  <br> 
+            <p class="fs-3">
+              Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua Palavra, conduzindo pessoas à
+              plena comunhão com Cristo e ao serviço ao próximo. Transmitindo as escrituras de forma genuína, levantando
+              um povo adorador, fazendo de cada membro um discípulo de Cristo e de cada casa uma extensão da igreja.
+              Levando ao retorno da origem onde todos são a imagem e semelhança de Deus (Gn1:26)
 
-      <hr class="border-light my-4">
-    </div>
-  </div>
-</section>
+            </p>
+          </div>
+        </div>
+
+        <!-- Coluna da imagem -->
+        <div class="row align-items-center">
+          <!-- Coluna da imagem -->
+          <div class="col-md-6 text-center">
+            <img src="imagens/l2.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
+          </div>
+
+          <!-- Coluna do texto -->
+          <div class="col-md-6 text-end lh-lg px-4">
+            <h2 class="fw-bold display-5">• Missão</h2>  <br> 
+            <p class="fs-3">
+
+              Direcionar pessoas a um relacionamento saudável com Deus e com o próximo, fortalecendo o conhecimento das
+              Escrituras e promovendo a transformação de vidas, sendo uma igreja renovada pelo Espírito Santo.
 
 
-      
+            </p>
+          </div>
+        </div>
+
+        <div class="container"> <!-- container para controlar largura -->
+          <div class="row align-items-center">
+            <!-- Coluna do texto -->
+            <div class="col-md-6 text-start lh-lg px-4">
+              <h2 class="fw-bold display-5">•Valores</h2>  <br> 
+              <p class="fs-3">
+                Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando crescer de modo relevante
+                para o Reino de Deus, através dos pilares Ganhar, consolidar, discipular e enviar.
+
+              </p>
+            </div>
+
+            <!-- Coluna da imagem -->
+            <div class="col-md-6 text-center">
+              <img src="imagens/aaa.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
+            </div>
+          </div>
 
 
+          <div class="row align-items-center">
+            <!-- Coluna da imagem (agora à esquerda) -->
+            <div class="col-md-6 text-center">
+              <img src="imagens/l2.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
+            </div>
 
+            <!-- Coluna do texto (agora à direita) -->
+            <div class="col-md-6 text-end lh-lg px-4">
+              <h2 class="fw-bold display-5">• Propósito </h2> <br> 
+              <p class="fs-3">
+                Ser uma comunidade acolhedora e discipuladora, onde cada pessoa encontra suporte, crescimento espiritual e encorajamento para viver o evangelho. Multiplicamos vidas transformadas por Cristo, levando amor e esperança ao mundo.  O Mire nasceu em Belo Horizonte em 2001, a igreja tem por objetivo promover e contribuir com o desenvolvimento pessoal e social.
+
+              </p>
+            </div>
+          </div> 
+          <div class="text-center mt-5">
+            <h2>"Mire, simples em ser e grande em acolher."</h2>
+          </div>
+
+        </div>
+
+
+    </section>
 
 
 
@@ -189,24 +299,8 @@
   <!-- Scripts Bootstrap e Vanta -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-  <script>
-    VANTA.NET({
-      el: "#fundo-animado",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.0,
-      scaleMobile: 1.0,
-      backgroundColor: "rgba(51, 51, 51, 0.8)",
-      color: 0xffffff,
-      maxDistance: 20.00,
-      spacing: 15.00,
-      showDots: false
-    });
-  </script>
+  <script src="js/sobre.js"></script>
+
 </body>
 
 </html>
