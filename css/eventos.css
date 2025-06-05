@@ -1,0 +1,712 @@
+/* Estilos base para o calendário */
+.container-calendario {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(34, 40, 49, 0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    padding: 30px;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cabecalho-calendario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.botao-navegacao {
+    background: rgba(57, 62, 70, 0.9);
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    min-width: fit-content;
+}
+
+.botao-navegacao:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    transition: left 0.4s ease;
+}
+
+.botao-navegacao:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 25px 50px rgba(102, 126, 234, 0.4),
+        0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.botao-navegacao:hover:before {
+    left: 100%;
+}
+
+.mes-ano {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(45deg, #fff, #948979, #948979);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    letter-spacing: -0.02em;
+    flex: 1;
+    min-width: 200px;
+}
+
+.calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+    background: transparent;
+    padding: 15px;
+}
+
+.cabecalho-dia {
+    background: rgba(57, 62, 70, 0.9);
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.dia {
+    background: rgba(34, 40, 49, 0.6);
+    min-height: 130px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 25px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.dia:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    border-radius: 25px;
+    z-index: -1;
+}
+
+.dia:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.15),
+        0 10px 30px rgba(102, 126, 234, 0.2);
+    background: rgba(57, 62, 70, 0.9);
+}
+
+.dia.outro-mes {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(34, 40, 49, 0.4);
+    transform: scale(0.95);
+}
+
+.dia.hoje {
+    background: linear-gradient(135deg, #948979, #948979, #fff);
+    color: white;
+    font-weight: 700;
+    box-shadow: 
+        0 20px 50px rgba(223, 208, 184, 1),
+        0 10px 25px rgba(223, 208, 184, 1);
+    animation: pulsacaoHoje 2s ease-in-out infinite;
+}
+
+@keyframes pulsacaoHoje {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.dia.tem-evento {
+    background: linear-gradient(135deg, #DFD0B8, #222831, #222831);
+    color: white;
+    box-shadow: 
+        0 20px 50px rgba(223, 208, 184, 1),
+        0 10px 25px rgba(223, 208, 184, 1);
+    animation: brilhoEvento 3s ease-in-out infinite;
+}
+
+@keyframes brilhoEvento {
+    0%, 100% { box-shadow: 0 20px 50px rgba(223, 208, 184, 1), 0 10px 25px rgba(148, 137, 121, 1); }
+    50% { box-shadow: 0 25px 60px rgba(223, 208, 184, 1), 0 15px 35px rgba(148, 137, 121, 1); }
+}
+
+.numero-dia {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imagem-evento {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 8px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 4px solid rgba(255, 255, 255, 0.8);
+}
+
+.imagem-evento:hover {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.titulo-evento {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    margin-top: 6px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    overflow-y: auto;
+}
+
+.conteudo-modal {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 3% auto;
+    padding: 30px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 
+        0 40px 100px rgba(0, 0, 0, 0.3),
+        0 20px 50px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: saltoModal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes saltoModal {
+    0% { 
+        transform: translateY(-100px) scale(0.8); 
+        opacity: 0; 
+    }
+    60% {
+        transform: translateY(10px) scale(1.05);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: translateY(0) scale(1); 
+        opacity: 1; 
+    }
+}
+
+.fechar {
+    color: #000;
+    float: right;
+    font-size: 32px;
+    font-weight: 700;
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.1);
+    z-index: 10;
+}
+
+.fechar:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1) rotate(90deg);
+}
+
+.modal h2 {
+    color: #000;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(45deg, #393E46, #222831);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.grupo-formulario {
+    margin-bottom: 30px;
+}
+
+.grupo-formulario label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #222831;
+    font-size: 1.1rem;
+}
+
+.grupo-formulario input {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+}
+
+.grupo-formulario input:focus {
+    outline: none;
+    border-color: #393E46;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 
+        0 0 0 5px rgba(102, 126, 234, 0.1),
+        0 10px 30px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
+}
+
+.grupo-formulario input::placeholder {
+    color: rgba(34, 40, 49, 0.4);
+}
+
+.botao {
+    background: linear-gradient(135deg, #393E46, #222831);
+    color: white;
+    padding: 18px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-right: 15px;
+    margin-bottom: 10px;
+    box-shadow: 
+        0 15px 35px rgba(102, 126, 234, 0.3),
+        0 5px 15px rgba(102, 126, 234, 0.2);
+    position: relative;
+    overflow: hidden;
+    min-width: fit-content;
+}
+
+.botao:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    transition: left 0.4s ease;
+}
+
+.botao:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 25px 50px rgba(102, 126, 234, 0.4),
+        0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.botao:hover:before {
+    left: 100%;
+}
+
+.botao-deletar {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    box-shadow: 
+        0 15px 35px rgba(255, 107, 107, 0.3),
+        0 5px 15px rgba(238, 90, 82, 0.2);
+}
+
+.botao-deletar:hover {
+    box-shadow: 
+        0 25px 50px rgba(255, 107, 107, 0.4),
+        0 10px 25px rgba(238, 90, 82, 0.3);
+}
+
+.preview-imagem {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 25px;
+    margin-top: 20px;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.2),
+        0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Efeitos de partículas flutuantes */
+.particula {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: flutuacao 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes flutuacao {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDADE */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .container-calendario {
+        max-width: 90%;
+        padding: 25px;
+    }
+    
+    .mes-ano {
+        font-size: 2.2rem;
+    }
+    
+    .dia {
+        min-height: 120px;
+        padding: 12px;
+    }
+    
+    .imagem-evento {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+/* Smartphones grandes */
+@media (max-width: 768px) {
+    .container-calendario {
+        padding: 20px 15px;
+        border-radius: 25px;
+        max-width: 95%;
+        margin: 10px auto;
+    }
+    
+    .cabecalho-calendario {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 25px;
+        padding: 0;
+    }
+    
+    .mes-ano {
+        font-size: 2rem;
+        order: 1;
+        margin: 0;
+    }
+    
+    .botao-navegacao {
+        padding: 12px 20px;
+        font-size: 13px;
+        order: 2;
+    }
+    
+    .calendario {
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .cabecalho-dia {
+        padding: 10px 5px;
+        font-size: 0.75rem;
+        border-radius: 15px;
+    }
+    
+    .dia {
+        min-height: 100px;
+        padding: 8px;
+        border-radius: 20px;
+    }
+    
+    .dia:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+    
+    .numero-dia {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    
+    .imagem-evento {
+        width: 45px;
+        height: 45px;
+        border-width: 2px;
+    }
+    
+    .titulo-evento {
+        font-size: 0.6rem;
+        margin-top: 4px;
+        line-height: 1.1;
+    }
+    
+    .conteudo-modal {
+        padding: 20px;
+        border-radius: 25px;
+        margin: 5% auto;
+        max-width: 95%;
+        width: 95%;
+    }
+    
+    .modal h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    
+    .fechar {
+        font-size: 28px;
+        width: 35px;
+        height: 35px;
+        right: 15px;
+        top: 15px;
+    }
+    
+    .grupo-formulario input {
+        padding: 15px;
+        font-size: 16px; /* Evita zoom no iOS */
+    }
+    
+    .grupo-formulario label {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .botao {
+        padding: 15px 25px;
+        font-size: 14px;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 480px) {
+    .container-calendario {
+        padding: 15px 10px;
+        margin: 5px auto;
+        border-radius: 20px;
+    }
+    
+    .mes-ano {
+        font-size: 1.8rem;
+    }
+    
+    .botao-navegacao {
+        padding: 10px 15px;
+        font-size: 12px;
+        min-width: 80px;
+    }
+    
+    .calendario {
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .cabecalho-dia {
+        padding: 8px 3px;
+        font-size: 0.7rem;
+        border-radius: 12px;
+    }
+    
+    .dia {
+        min-height: 85px;
+        padding: 6px;
+        border-radius: 15px;
+    }
+    
+    .numero-dia {
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+    }
+    
+    .imagem-evento {
+        width: 35px;
+        height: 35px;
+        border-width: 2px;
+        margin-top: 3px;
+    }
+    
+    .titulo-evento {
+        font-size: 0.55rem;
+        margin-top: 2px;
+    }
+    
+    .conteudo-modal {
+        padding: 15px;
+        margin: 2% auto;
+        border-radius: 20px;
+    }
+    
+    .modal h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .fechar {
+        font-size: 24px;
+        width: 30px;
+        height: 30px;
+        right: 10px;
+        top: 10px;
+    }
+    
+    .grupo-formulario {
+        margin-bottom: 20px;
+    }
+    
+    .grupo-formulario input {
+        padding: 12px;
+    }
+    
+    .botao {
+        padding: 12px 20px;
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .preview-imagem {
+        max-height: 200px;
+        border-radius: 15px;
+        border-width: 2px;
+    }
+}
+
+/* Orientação landscape em smartphones */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container-calendario {
+        padding: 10px;
+    }
+    
+    .cabecalho-calendario {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    
+    .mes-ano {
+        font-size: 1.5rem;
+        order: 0;
+    }
+    
+    .botao-navegacao {
+        order: 0;
+        padding: 8px 15px;
+        font-size: 11px;
+    }
+    
+    .calendario {
+        gap: 6px;
+        padding: 5px;
+    }
+    
+    .dia {
+        min-height: 70px;
+        padding: 4px;
+    }
+    
+    .numero-dia {
+        font-size: 0.8rem;
+        margin-bottom: 2px;
+    }
+    
+    .imagem-evento {
+        width: 25px;
+        height: 25px;
+        margin-top: 2px;
+    }
+    
+    .titulo-evento {
+        font-size: 0.5rem;
+        margin-top: 1px;
+    }
+    
+    .conteudo-modal {
+        margin: 1% auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* Touch targets para melhor usabilidade */
+@media (max-width: 768px) {
+    .dia,
+    .botao-navegacao,
+    .botao,
+    .fechar {
+        min-height: 44px; /* Tamanho mínimo recomendado para touch */
+    }
+}
+
+/* Prevenção de zoom em inputs no iOS */
+@media (max-width: 768px) {
+    .grupo-formulario input,
+    .grupo-formulario select,
+    .grupo-formulario textarea {
+        font-size: 16px !important;
+    }
+}

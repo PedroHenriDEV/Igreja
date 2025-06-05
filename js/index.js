@@ -16,3 +16,12 @@ tickets.forEach(ticket => {
     }, 500);
   });
 });
+
+// horario cultos botao
+function mostrarHorarios(e) {
+  e.preventDefault(); // Evita o comportamento padrão do link
+
+  const card = document.getElementById('cardHorarios');
+  card.style.display = card.style.display === 'none' ? 'block' : 'none';
+
+}

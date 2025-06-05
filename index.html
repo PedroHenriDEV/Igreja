@@ -32,7 +32,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg" id="mainNavbar">
       <div class="container">
-          <a class="navbar-brand neon-logo" href="index.html">
+          <a class="navbar-brand neon-logo" href="#">
               <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
             </a>
 
@@ -136,16 +136,24 @@
           <h4 class=" text-uppercase">Internacional da</h4>
           <h2 class=" fw-bold text-uppercase">Renovação</h2>
 
-          <a href="cultos.html" class="btn btn-outline-light btn-lg mt-3 fw-bold">
+          <button class="btn btn-outline-light btn-lg mt-3 fw-bold" onclick="mostrarHorarios(event)">
             Conheça Nossos Cultos
-          </a>
+          </button>
 
+          
           <br /><br />
 
           <h2 class="text-white mb-3"><strong>Visão Celular</strong></h2>
           <p class="mb-2 fw-bold">
             A ferramenta que usamos para Ganhar, Consolidar, Discipular e Enviar.
           </p>
+
+           <div id="cardHorarios" class=" card text-white bg-dark mt-4 p-3" style="display: none; max-width: 400px;">
+            <div class="card-body">
+              <h5 class="card-title">Horários dos Cultos</h5>
+              <p class="card-text">Sábado: 19:30 - <strong>Culto Extraordinário</strong></p>
+              <p class="card-text">Domingo: 19:00 - <strong>Culto da Família</strong></p>
+            </div>
         </div>
 
       </div>
@@ -158,7 +166,7 @@
       <div class="d-flex justify-content-start mb-4">
         <a href="sobre.html" class="ticket" onclick="rasgar(event)">
           <div class="left">
-            <p class="admit fw-bold">Conheça mais sobre a nossa</p>
+            <p class="admit fw-bold">Conheça mais sobre a nossa Igreja!</p>
             <p class="serial">MIRE</p>
           </div>
           <div class="right">
