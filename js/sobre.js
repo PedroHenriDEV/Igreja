@@ -203,6 +203,12 @@ document.querySelectorAll('.view-btn').forEach(btn => {
     });
 });
 
+  function scrollGaleria(direction) {
+    const galeria = document.getElementById('galeriaScroll');
+    const scrollAmount = 300 * direction; // ajuste o valor conforme desejar
+    galeria.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+
 // Inicializa
 updateTodayDate();
 generateCalendar(currentMonth, currentYear);

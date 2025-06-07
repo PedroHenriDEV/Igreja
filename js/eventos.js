@@ -1,281 +1,488 @@
-// Variáveis globais
-let currentDate = new Date();
-let selectedDate = null;
-let currentView = 'month';
+// Sistema de Calendário de Eventos
+class EventCalendar {
+    constructor() {
+        this.currentDate = new Date();
+        this.selectedDate = null;
+        this.events = this.loadEvents();
+        this.eventTypes = {
+            worship: { name: 'Cultos e Adoração', color: '#9f7aea' },
+            study: { name: 'Estudos Bíblicos', color: '#4299e1' },
+            youth: { name: 'Ministério Jovem', color: '#48bb78' },
+            meeting: { name: 'Reuniões', color: '#ed8936' },
+            special: { name: 'Eventos Especiais', color: '#e53e3e' },
+            social: { name: 'Atividades Sociais', color: '#38b2ac' }
+        };
+        this.init();
+    }
 
-// Dados dos eventos (simulando um banco de dados)
-let events = {
-    '2025-06-07': [
-        { id: 1, title: 'Culto Dominical', time: '10:00', location: 'Templo Principal', category: 'worship' },
-        { id: 2, title: 'Escola Dominical', time: '15:00', location: 'Salas de Aula', category: 'study' },
-        { id: 3, title: 'Reunião Jovens', time: '18:00', location: 'Salão Jovem', category: 'youth' }
-    ],
-    '2025-06-08': [
-        { id: 4, title: 'Estudo Bíblico', time: '19:30', location: 'Sala 1', category: 'study' }
-    ],
-    '2025-06-10': [
-        { id: 5, title: 'Reunião de Oração', time: '19:00', location: 'Santuário', category: 'worship' }
-    ],
-    '2025-06-15': [
-        { id: 6, title: 'Conferência de Jovens', time: '14:00', location: 'Auditório Principal', category: 'special' }
-    ],
-    '2025-06-22': [
-        { id: 7, title: 'Batismo', time: '16:00', location: 'Batistério', category: 'special' }
-    ],
-    '2025-06-29': [
-        { id: 8, title: 'Festa Junina', time: '18:00', location: 'Quadra Coberta', category: 'social' }
-    ],
-    '2025-07-05': [
-        { id: 9, title: 'Retiro de Casais', time: '09:00', location: 'Chácara Esperança', category: 'special' }
-    ]
-};
+    init() {
+        this.updateTodayDate();
+        this.renderCalendar();
+        this.updateTodayEvents();
+        this.updateUpcomingEvents();
+        this.updateStats();
+        this.setupEventListeners();
+        this.createEventModal();
+    }
 
-// Nomes dos meses e dias da semana
-const monthNames = [
-    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-];
-
-const dayNames = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-
-// Inicialização quando a página carrega
-document.addEventListener('DOMContentLoaded', function() {
-    initializeCalendar();
-    updateTodayDate();
-    setupEventListeners();
-    updateTodayEvents();
-    updateStats();
-    updateUpcomingEvents();
-});
-
-// Configurar event listeners
-function setupEventListeners() {
-    // Seletores de visualização
-    const viewButtons = document.querySelectorAll('.view-btn');
-    viewButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            viewButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentView = this.textContent.toLowerCase();
-            renderCalendar();
-        });
-    });
-
- 
-    // Event listener para adicionar evento (duplo clique)
-    document.addEventListener('dblclick', function(e) {
-        if (e.target.classList.contains('day-cell') && !e.target.classList.contains('other-month')) {
-            const dayNumber = parseInt(e.target.textContent);
-            if (!isNaN(dayNumber)) {
-                openAddEventModal(dayNumber);
-            }
+    // Carregar eventos do localStorage
+    loadEvents() {
+        const savedEvents = localStorage.getItem('churchEvents');
+        if (savedEvents) {
+            return JSON.parse(savedEvents);
         }
-    });
-}
+        // Eventos padrão
+        return {
+            '2025-06-08': [
+                { id: 1, title: 'Culto Dominical', time: '10:00', type: 'worship', location: 'Templo Principal' },
+                { id: 2, title: 'Escola Dominical', time: '15:00', type: 'study', location: 'Salas de Aula' },
+                { id: 3, title: 'Reunião Jovens', time: '18:00', type: 'youth', location: 'Salão Jovem' }
+            ],
+            '2025-06-15': [
+                { id: 4, title: 'Conferência de Jovens', time: '14:00', type: 'special', location: 'Auditório Principal' }
+            ],
+            '2025-06-22': [
+                { id: 5, title: 'Batismo', time: '16:00', type: 'special', location: 'Batistério' }
+            ],
+            '2025-06-29': [
+                { id: 6, title: 'Festa Junina', time: '18:00', type: 'social', location: 'Quadra Coberta' }
+            ],
+            '2025-07-05': [
+                { id: 7, title: 'Retiro de Casais', time: '08:00', type: 'special', location: 'Chácara Esperança' }
+            ]
+        };
+    }
 
-// Inicializar calendário
-function initializeCalendar() {
-    renderCalendar();
-}
+    // Salvar eventos no localStorage
+    saveEvents() {
+        localStorage.setItem('churchEvents', JSON.stringify(this.events));
+    }
 
-// Atualizar data de hoje
-function updateTodayDate() {
-    const today = new Date();
-    const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-    };
-    document.getElementById('today-date').textContent = today.toLocaleDateString('pt-BR', options);
-}
+    // Atualizar data de hoje
+    updateTodayDate() {
+        const today = new Date();
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+        document.getElementById('today-date').textContent = today.toLocaleDateString('pt-BR', options);
+    }
 
-// Renderizar calendário
-function renderCalendar() {
-    const monthYear = document.getElementById('month-year');
-    const calendarDays = document.getElementById('calendar-days');
-    
-    monthYear.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-    
-    // Limpar dias anteriores
-    calendarDays.innerHTML = '';
-    
-    // Primeiro dia do mês e último dia do mês anterior
-    const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-    const startDate = new Date(firstDay);
-    startDate.setDate(startDate.getDate() - firstDay.getDay());
-    
-    // Gerar 42 dias (6 semanas)
-    for (let i = 0; i < 42; i++) {
-        const date = new Date(startDate);
-        date.setDate(startDate.getDate() + i);
+    // Configurar event listeners
+    setupEventListeners() {
+        // Botões de navegação
+        window.previousMonth = () => {
+            this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+            this.renderCalendar();
+            this.updateTodayEvents();
+            this.updateUpcomingEvents();
+            this.updateStats();
+        };
+
+        window.nextMonth = () => {
+            this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+            this.renderCalendar();
+            this.updateTodayEvents();
+            this.updateUpcomingEvents();
+            this.updateStats();
+        };
+
+        // Botão para adicionar evento
+        const addEventBtn = document.createElement('button');
+        addEventBtn.className = 'btn btn-gradient ms-2';
+        addEventBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Adicionar Evento';
+        addEventBtn.onclick = () => this.openEventModal();
         
-        const dayElement = createDayElement(date);
-        calendarDays.appendChild(dayElement);
+        const headerActions = document.querySelector('.view-selector').parentElement;
+        headerActions.appendChild(addEventBtn);
     }
-}
 
-// Criar elemento do dia
-function createDayElement(date) {
-    const dayDiv = document.createElement('div');
-    const dayNumber = date.getDate();
-    const dateKey = formatDateKey(date);
-    const isCurrentMonth = date.getMonth() === currentDate.getMonth();
-    const isToday = isDateToday(date);
-    const hasEvents = events[dateKey] && events[dateKey].length > 0;
-    
-    dayDiv.className = 'day-cell';
-    dayDiv.textContent = dayNumber;
-    
-    if (!isCurrentMonth) {
-        dayDiv.classList.add('other-month');
-    }
-    
-    if (isToday) {
-        dayDiv.classList.add('today');
-    }
-    
-    if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
-        dayDiv.classList.add('selected');
-    }
-    
-    if (hasEvents) {
-        dayDiv.classList.add('has-events');
+    // Renderizar calendário
+    renderCalendar() {
+        const year = this.currentDate.getFullYear();
+        const month = this.currentDate.getMonth();
         
-        // Adicionar indicadores de eventos
+        // Atualizar título do mês/ano
+        const monthNames = [
+            'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+        ];
+        document.getElementById('month-year').textContent = `${monthNames[month]} ${year}`;
+
+        // Calcular primeiro dia do mês e dias no mês
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const startDate = new Date(firstDay);
+        startDate.setDate(startDate.getDate() - firstDay.getDay());
+
+        const calendarDays = document.getElementById('calendar-days');
+        calendarDays.innerHTML = '';
+
+        // Gerar 42 dias (6 semanas)
+        for (let i = 0; i < 42; i++) {
+            const cellDate = new Date(startDate);
+            cellDate.setDate(startDate.getDate() + i);
+            
+            const dayCell = this.createDayCell(cellDate, month);
+            calendarDays.appendChild(dayCell);
+        }
+    }
+
+    // Criar célula do dia
+    createDayCell(date, currentMonth) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'day-cell';
+        
+        const isCurrentMonth = date.getMonth() === currentMonth;
+        const isToday = this.isToday(date);
+        const dateStr = this.formatDateString(date);
+        
+        if (!isCurrentMonth) {
+            dayCell.classList.add('other-month');
+        }
+        
+        if (isToday) {
+            dayCell.classList.add('today');
+        }
+
+        // Número do dia
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'day-number';
+        dayNumber.textContent = date.getDate();
+        dayCell.appendChild(dayNumber);
+
+        // Container de eventos
         const eventsContainer = document.createElement('div');
         eventsContainer.className = 'day-events';
         
-        events[dateKey].forEach(event => {
+        // Adicionar eventos do dia
+        const dayEvents = this.events[dateStr] || [];
+        dayEvents.forEach(event => {
             const eventDot = document.createElement('div');
-            eventDot.className = `event-dot ${event.category}`;
+            eventDot.className = `event-dot ${event.type}`;
+            eventDot.textContent = event.title;
             eventDot.title = `${event.time} - ${event.title}`;
             eventsContainer.appendChild(eventDot);
         });
-        
-        dayDiv.appendChild(eventsContainer);
+
+        dayCell.appendChild(eventsContainer);
+
+        // Adicionar evento de clique
+        dayCell.onclick = () => this.selectDate(date, dayCell);
+
+        return dayCell;
     }
-    
-    return dayDiv;
-}
 
-// Selecionar data
-function selectDate(dayNumber) {
-    selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayNumber);
-    renderCalendar();
-    updateSelectedDateEvents();
-}
-
-// Atualizar eventos da data selecionada
-function updateSelectedDateEvents() {
-    if (!selectedDate) return;
-    
-    const dateKey = formatDateKey(selectedDate);
-    const dayEvents = events[dateKey] || [];
-    
-    // Atualizar título dos eventos de hoje
-    const todayTitle = document.querySelector('.card-title');
-    if (todayTitle && todayTitle.textContent.includes('Eventos de Hoje')) {
-        const selectedDateStr = selectedDate.toLocaleDateString('pt-BR', { 
-            weekday: 'long', 
-            day: 'numeric', 
-            month: 'long' 
+    // Selecionar data
+    selectDate(date, dayCell) {
+        // Limpar seleção anterior
+        document.querySelectorAll('.day-cell.selected').forEach(cell => {
+            cell.classList.remove('selected');
         });
-        todayTitle.innerHTML = `<i class="bi bi-calendar-day text-primary"></i> Eventos - ${selectedDateStr}`;
-    }
-    
-    updateEventsDisplay('.today-events', dayEvents);
-}
 
-// Atualizar eventos de hoje
-function updateTodayEvents() {
-    const today = new Date();
-    const dateKey = formatDateKey(today);
-    const todayEvents = events[dateKey] || [];
-    
-    updateEventsDisplay('.today-events', todayEvents);
-}
-
-// Atualizar display de eventos
-function updateEventsDisplay(selector, eventsList) {
-    const container = document.querySelector(selector);
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    if (eventsList.length === 0) {
-        container.innerHTML = '<p class="text-muted text-center">Nenhum evento programado</p>';
-        return;
+        // Selecionar nova data
+        dayCell.classList.add('selected');
+        this.selectedDate = new Date(date);
+        
+        // Atualizar eventos do dia selecionado
+        this.updateSelectedDayEvents();
     }
-    
-    eventsList.forEach(event => {
-        const eventItem = document.createElement('div');
-        eventItem.className = 'event-item d-flex align-items-center gap-3';
-        eventItem.innerHTML = `
-            <div class="event-category ${event.category}"></div>
-            <div class="event-time">${event.time}</div>
-            <div class="event-info flex-grow-1">
-                <h6 class="mb-1">${event.title}</h6>
-                <small class="text-muted">${event.location}</small>
-            </div>
-            <div class="event-actions">
-                <button class="btn btn-sm btn-outline-primary" onclick="editEvent(${event.id})">
-                    <i class="bi bi-pencil"></i>
-                </button>
-                <button class="btn btn-sm btn-outline-danger" onclick="deleteEvent(${event.id})">
-                    <i class="bi bi-trash"></i>
-                </button>
-            </div>
+
+    // Verificar se é hoje
+    isToday(date) {
+        const today = new Date();
+        return date.toDateString() === today.toDateString();
+    }
+
+    // Formatar data para string
+    formatDateString(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    // Atualizar eventos de hoje
+    updateTodayEvents() {
+        const today = new Date();
+        const todayStr = this.formatDateString(today);
+        const todayEvents = this.events[todayStr] || [];
+        
+        const container = document.querySelector('.today-events');
+        container.innerHTML = '';
+
+        if (todayEvents.length === 0) {
+            container.innerHTML = `
+                <div class="text-center py-4">
+                    <i class="bi bi-calendar-x text-muted" style="font-size: 2rem;"></i>
+                    <p class="text-muted mt-2">Nenhum evento hoje</p>
+                    <button class="btn btn-sm btn-outline-primary" onclick="calendar.addEventForToday()">
+                        <i class="bi bi-plus-circle me-1"></i>
+                        Adicionar Evento
+                    </button>
+                </div>
+            `;
+            return;
+        }
+
+        // Ordenar eventos por horário
+        const sortedEvents = todayEvents.sort((a, b) => a.time.localeCompare(b.time));
+
+        sortedEvents.forEach(event => {
+            const eventTime = new Date(`${todayStr}T${event.time}`);
+            const now = new Date();
+            const isPast = eventTime < now;
+            const isUpcoming = eventTime > now;
+            const isNow = Math.abs(eventTime - now) < 30 * 60 * 1000; // 30 minutos
+
+            let statusClass = '';
+            let statusIcon = '';
+            let statusText = '';
+
+            if (isPast) {
+                statusClass = 'text-muted';
+                statusIcon = 'bi-check-circle';
+                statusText = 'Concluído';
+            } else if (isNow) {
+                statusClass = 'text-warning';
+                statusIcon = 'bi-clock';
+                statusText = 'Agora';
+            } else {
+                statusClass = 'text-info';
+                statusIcon = 'bi-hourglass-split';
+                statusText = 'Próximo';
+            }
+
+            const eventItem = document.createElement('div');
+            eventItem.className = `event-item d-flex align-items-center gap-3 ${isPast ? 'opacity-75' : ''}`;
+            eventItem.innerHTML = `
+                <div class="event-category ${event.type}"></div>
+                <div class="event-time ${statusClass}">${event.time}</div>
+                <div class="event-info flex-grow-1" onclick="calendar.showEventDetails('${todayStr}', ${event.id})" style="cursor: pointer;">
+                    <h6 class="mb-1 d-flex align-items-center gap-2">
+                        ${event.title}
+                        <small class="badge bg-light text-dark">
+                            <i class="${statusIcon} me-1"></i>${statusText}
+                        </small>
+                    </h6>
+                    <small class="text-muted">${event.location}</small>
+                </div>
+                <div class="event-actions">
+                    <button class="btn btn-sm btn-outline-info" onclick="calendar.showEventDetails('${todayStr}', ${event.id})" title="Ver Detalhes">
+                        <i class="bi bi-info-circle"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary" onclick="calendar.editEvent('${todayStr}', ${event.id})" title="Editar">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="calendar.deleteEvent('${todayStr}', ${event.id})" title="Excluir">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            `;
+            container.appendChild(eventItem);
+        });
+
+        // Adicionar botão para adicionar mais eventos
+        const addMoreBtn = document.createElement('div');
+        addMoreBtn.className = 'text-center mt-3 border-top pt-3';
+        addMoreBtn.innerHTML = `
+            <button class="btn btn-sm btn-outline-primary" onclick="calendar.addEventForToday()">
+                <i class="bi bi-plus-circle me-1"></i>
+                Adicionar Outro Evento
+            </button>
         `;
-        container.appendChild(eventItem);
-    });
-}
+        container.appendChild(addMoreBtn);
+    }
 
-// Navegar para mês anterior
-function previousMonth() {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar();
-    updateStats();
-    updateUpcomingEvents();
-}
+    // Adicionar evento para hoje
+    addEventForToday() {
+        const today = new Date();
+        this.selectedDate = today;
+        this.openEventModal();
+    }
 
-// Navegar para próximo mês
-function nextMonth() {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-    updateStats();
-    updateUpcomingEvents();
-}
+    // Deletar evento
+    deleteEvent(dateStr, eventId) {
+        if (confirm('Tem certeza que deseja excluir este evento?')) {
+            if (this.events[dateStr]) {
+                this.events[dateStr] = this.events[dateStr].filter(e => e.id !== eventId);
+                if (this.events[dateStr].length === 0) {
+                    delete this.events[dateStr];
+                }
+                this.saveEvents();
+                
+                // Atualizar interface
+                this.renderCalendar();
+                this.updateTodayEvents();
+                this.updateUpcomingEvents();
+                this.updateStats();
+            }
+        }
+    }
 
-// Abrir modal para adicionar evento
-function openAddEventModal(dayNumber) {
-    const eventDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayNumber);
-    const dateStr = eventDate.toLocaleDateString('pt-BR');
-    
-    // Criar modal dinamicamente
-    const modalHTML = `
-        <div class="modal fade" id="eventModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Adicionar Evento - ${dateStr}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    // Atualizar eventos do dia selecionado
+    updateSelectedDayEvents() {
+        if (!this.selectedDate) return;
+        
+        const selectedStr = this.formatDateString(this.selectedDate);
+        const selectedEvents = this.events[selectedStr] || [];
+        
+        // Pode implementar um modal ou painel lateral para mostrar eventos do dia selecionado
+        console.log('Eventos do dia selecionado:', selectedEvents);
+    }
+
+    // Atualizar próximos eventos
+    updateUpcomingEvents() {
+        const container = document.querySelector('.upcoming-events');
+        const upcomingEvents = this.getUpcomingEvents();
+        
+        container.innerHTML = '';
+
+        if (upcomingEvents.length === 0) {
+            container.innerHTML = '<p class="text-muted text-center">Nenhum evento próximo</p>';
+            return;
+        }
+
+        upcomingEvents.forEach(event => {
+            const eventDate = new Date(event.date);
+            const day = eventDate.getDate();
+            const month = eventDate.toLocaleDateString('pt-BR', { month: 'short' });
+            
+            const eventElement = document.createElement('div');
+            eventElement.className = 'upcoming-event p-3 mb-3';
+            eventElement.style.cursor = 'pointer';
+            eventElement.innerHTML = `
+                <div class="d-flex gap-3 align-items-center">
+                    <div class="text-center" style="min-width: 50px;">
+                        <div class="upcoming-day">${day}</div>
+                        <div class="upcoming-month">${month}</div>
                     </div>
-                    <div class="modal-body">
-                        <form id="eventForm">
-                            <div class="mb-3">
-                                <label for="eventTitle" class="form-label">Título do Evento</label>
-                                <input type="text" class="form-control" id="eventTitle" required>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                    <div class="flex-grow-1" onclick="calendar.goToEventDate('${event.date}')">
+                        <h6 class="mb-1">${event.title}</h6>
+                        <small class="text-muted">${this.getDayOfWeek(eventDate)}, ${event.time} - ${event.location}</small>
+                        <div class="event-type-badge mt-1">
+                            <span class="badge" style="background-color: ${this.eventTypes[event.type].color}; font-size: 0.7rem;">
+                                ${this.eventTypes[event.type].name}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn btn-sm btn-outline-info" onclick="calendar.showEventDetails('${event.date}', ${event.id})" title="Ver Detalhes">
+                            <i class="bi bi-info-circle"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-primary" onclick="calendar.editEvent('${event.date}', ${event.id})" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="calendar.deleteEvent('${event.date}', ${event.id})" title="Excluir">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Adicionar evento de clique para navegar para a data
+            eventElement.addEventListener('click', (e) => {
+                // Evitar que o clique nos botões dispare a navegação
+                if (!e.target.closest('.event-actions')) {
+                    this.goToEventDate(event.date);
+                }
+            });
+            
+            container.appendChild(eventElement);
+        });
+    }
+
+    // Obter próximos eventos
+    getUpcomingEvents() {
+        const today = new Date();
+        const upcomingEvents = [];
+        
+        Object.keys(this.events).forEach(dateStr => {
+            const eventDate = new Date(dateStr);
+            if (eventDate > today) {
+                this.events[dateStr].forEach(event => {
+                    upcomingEvents.push({
+                        ...event,
+                        date: dateStr
+                    });
+                });
+            }
+        });
+
+        // Ordenar por data
+        upcomingEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        return upcomingEvents.slice(0, 10); // Primeiros 10 eventos
+    }
+
+    // Obter dia da semana
+    getDayOfWeek(date) {
+        const days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+        return days[date.getDay()];
+    }
+
+    // Atualizar estatísticas
+    updateStats() {
+        const currentMonth = this.currentDate.getMonth();
+        const currentYear = this.currentDate.getFullYear();
+        
+        let totalEvents = 0;
+        let worshipEvents = 0;
+        let studyEvents = 0;
+        let specialEvents = 0;
+
+        Object.keys(this.events).forEach(dateStr => {
+            const eventDate = new Date(dateStr);
+            if (eventDate.getMonth() === currentMonth && eventDate.getFullYear() === currentYear) {
+                this.events[dateStr].forEach(event => {
+                    totalEvents++;
+                    if (event.type === 'worship') worshipEvents++;
+                    if (event.type === 'study') studyEvents++;
+                    if (event.type === 'special') specialEvents++;
+                });
+            }
+        });
+
+        // Atualizar os números nas estatísticas
+        const statNumbers = document.querySelectorAll('.stat-number');
+        if (statNumbers.length >= 4) {
+            statNumbers[0].textContent = totalEvents;
+            statNumbers[1].textContent = worshipEvents;
+            statNumbers[2].textContent = studyEvents;
+            statNumbers[3].textContent = specialEvents;
+        }
+    }
+
+    // Criar modal de evento
+    createEventModal() {
+        const modalHTML = `
+            <div class="modal fade" id="eventModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Adicionar Evento</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="eventForm">
+                                <div class="mb-3">
+                                    <label for="eventTitle" class="form-label">Título do Evento</label>
+                                    <input type="text" class="form-control" id="eventTitle" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventDate" class="form-label">Data</label>
+                                    <input type="date" class="form-control" id="eventDate" required>
+                                </div>
+                                <div class="mb-3">
                                     <label for="eventTime" class="form-label">Horário</label>
                                     <input type="time" class="form-control" id="eventTime" required>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="eventCategory" class="form-label">Categoria</label>
-                                    <select class="form-select" id="eventCategory" required>
+                                <div class="mb-3">
+                                    <label for="eventType" class="form-label">Tipo de Evento</label>
+                                    <select class="form-select" id="eventType" required>
+                                        <option value="">Selecione o tipo</option>
                                         <option value="worship">Cultos e Adoração</option>
                                         <option value="study">Estudos Bíblicos</option>
                                         <option value="youth">Ministério Jovem</option>
@@ -284,354 +491,325 @@ function openAddEventModal(dayNumber) {
                                         <option value="social">Atividades Sociais</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <label for="eventLocation" class="form-label">Local</label>
-                                <input type="text" class="form-control" id="eventLocation" required>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="saveEvent(${dayNumber})">Salvar Evento</button>
+                                <div class="mb-3">
+                                    <label for="eventLocation" class="form-label">Local</label>
+                                    <input type="text" class="form-control" id="eventLocation" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-gradient" onclick="calendar.saveEvent()">Salvar Evento</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `;
-    
-    // Remover modal existente se houver
-    const existingModal = document.getElementById('eventModal');
-    if (existingModal) {
-        existingModal.remove();
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
-    
-    // Adicionar modal ao body
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    
-    // Mostrar modal
-    const modal = new bootstrap.Modal(document.getElementById('eventModal'));
-    modal.show();
-}
 
-// Salvar evento
-function saveEvent(dayNumber) {
-    const title = document.getElementById('eventTitle').value;
-    const time = document.getElementById('eventTime').value;
-    const category = document.getElementById('eventCategory').value;
-    const location = document.getElementById('eventLocation').value;
-    
-    if (!title || !time || !location) {
-        alert('Por favor, preencha todos os campos obrigatórios.');
-        return;
-    }
-    
-    const eventDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayNumber);
-    const dateKey = formatDateKey(eventDate);
-    
-    // Criar novo evento
-    const newEvent = {
-        id: Date.now(), // ID simples baseado no timestamp
-        title: title,
-        time: time,
-        location: location,
-        category: category
-    };
-    
-    // Adicionar evento ao objeto de eventos
-    if (!events[dateKey]) {
-        events[dateKey] = [];
-    }
-    events[dateKey].push(newEvent);
-    
-    // Fechar modal
-    const modal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
-    modal.hide();
-    
-    // Atualizar interface
-    renderCalendar();
-    updateTodayEvents();
-    updateStats();
-    updateUpcomingEvents();
-    
-    // Mostrar mensagem de sucesso
-    showNotification('Evento adicionado com sucesso!', 'success');
-}
-
-// Editar evento
-function editEvent(eventId) {
-    // Encontrar evento
-    let eventToEdit = null;
-    let eventDateKey = null;
-    
-    for (const dateKey in events) {
-        const event = events[dateKey].find(e => e.id === eventId);
-        if (event) {
-            eventToEdit = event;
-            eventDateKey = dateKey;
-            break;
-        }
-    }
-    
-    if (!eventToEdit) return;
-    
-    // Criar modal de edição
-    const modalHTML = `
-        <div class="modal fade" id="editEventModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Editar Evento</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="editEventForm">
-                            <div class="mb-3">
-                                <label for="editEventTitle" class="form-label">Título do Evento</label>
-                                <input type="text" class="form-control" id="editEventTitle" value="${eventToEdit.title}" required>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="editEventTime" class="form-label">Horário</label>
-                                    <input type="time" class="form-control" id="editEventTime" value="${eventToEdit.time}" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="editEventCategory" class="form-label">Categoria</label>
-                                    <select class="form-select" id="editEventCategory" required>
-                                        <option value="worship" ${eventToEdit.category === 'worship' ? 'selected' : ''}>Cultos e Adoração</option>
-                                        <option value="study" ${eventToEdit.category === 'study' ? 'selected' : ''}>Estudos Bíblicos</option>
-                                        <option value="youth" ${eventToEdit.category === 'youth' ? 'selected' : ''}>Ministério Jovem</option>
-                                        <option value="meeting" ${eventToEdit.category === 'meeting' ? 'selected' : ''}>Reuniões</option>
-                                        <option value="special" ${eventToEdit.category === 'special' ? 'selected' : ''}>Eventos Especiais</option>
-                                        <option value="social" ${eventToEdit.category === 'social' ? 'selected' : ''}>Atividades Sociais</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <label for="editEventLocation" class="form-label">Local</label>
-                                <input type="text" class="form-control" id="editEventLocation" value="${eventToEdit.location}" required>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="updateEvent(${eventId}, '${eventDateKey}')">Atualizar Evento</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Remover modal existente se houver
-    const existingModal = document.getElementById('editEventModal');
-    if (existingModal) {
-        existingModal.remove();
-    }
-    
-    // Adicionar modal ao body
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    
-    // Mostrar modal
-    const modal = new bootstrap.Modal(document.getElementById('editEventModal'));
-    modal.show();
-}
-
-// Atualizar evento
-function updateEvent(eventId, dateKey) {
-    const title = document.getElementById('editEventTitle').value;
-    const time = document.getElementById('editEventTime').value;
-    const category = document.getElementById('editEventCategory').value;
-    const location = document.getElementById('editEventLocation').value;
-    
-    if (!title || !time || !location) {
-        alert('Por favor, preencha todos os campos obrigatórios.');
-        return;
-    }
-    
-    // Encontrar e atualizar evento
-    const eventIndex = events[dateKey].findIndex(e => e.id === eventId);
-    if (eventIndex !== -1) {
-        events[dateKey][eventIndex] = {
-            ...events[dateKey][eventIndex],
-            title: title,
-            time: time,
-            category: category,
-            location: location
-        };
-    }
-    
-    // Fechar modal
-    const modal = bootstrap.Modal.getInstance(document.getElementById('editEventModal'));
-    modal.hide();
-    
-    // Atualizar interface
-    renderCalendar();
-    updateTodayEvents();
-    updateSelectedDateEvents();
-    updateStats();
-    updateUpcomingEvents();
-    
-    showNotification('Evento atualizado com sucesso!', 'success');
-}
-
-// Deletar evento
-function deleteEvent(eventId) {
-    if (!confirm('Tem certeza que deseja excluir este evento?')) {
-        return;
-    }
-    
-    // Encontrar e remover evento
-    for (const dateKey in events) {
-        const eventIndex = events[dateKey].findIndex(e => e.id === eventId);
-        if (eventIndex !== -1) {
-            events[dateKey].splice(eventIndex, 1);
-            if (events[dateKey].length === 0) {
-                delete events[dateKey];
+    // Abrir modal de evento
+    openEventModal(editEvent = null, eventDate = null) {
+        const modal = new bootstrap.Modal(document.getElementById('eventModal'));
+        const form = document.getElementById('eventForm');
+        
+        if (editEvent) {
+            // Modo edição
+            document.querySelector('.modal-title').textContent = 'Editar Evento';
+            document.getElementById('eventTitle').value = editEvent.title;
+            document.getElementById('eventDate').value = eventDate;
+            document.getElementById('eventTime').value = editEvent.time;
+            document.getElementById('eventType').value = editEvent.type;
+            document.getElementById('eventLocation').value = editEvent.location;
+            
+            // Armazenar dados para edição
+            form.dataset.editMode = 'true';
+            form.dataset.eventId = editEvent.id;
+            form.dataset.eventDate = eventDate;
+        } else {
+            // Modo criação
+            document.querySelector('.modal-title').textContent = 'Adicionar Evento';
+            form.reset();
+            delete form.dataset.editMode;
+            delete form.dataset.eventId;
+            delete form.dataset.eventDate;
+            
+            // Se tiver data selecionada, usar ela
+            if (this.selectedDate) {
+                document.getElementById('eventDate').value = this.formatDateString(this.selectedDate);
             }
-            break;
         }
-    }
-    
-    // Atualizar interface
-    renderCalendar();
-    updateTodayEvents();
-    updateSelectedDateEvents();
-    updateStats();
-    updateUpcomingEvents();
-    
-    showNotification('Evento excluído com sucesso!', 'info');
-}
-
-// Atualizar estatísticas
-function updateStats() {
-    const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
-    
-    let totalEvents = 0;
-    let worshipEvents = 0;
-    let studyEvents = 0;
-    let specialEvents = 0;
-    
-    for (const dateKey in events) {
-        const date = new Date(dateKey);
-        if (date.getMonth() === currentMonth && date.getFullYear() === currentYear) {
-            events[dateKey].forEach(event => {
-                totalEvents++;
-                switch (event.category) {
-                    case 'worship':
-                        worshipEvents++;
-                        break;
-                    case 'study':
-                        studyEvents++;
-                        break;
-                    case 'special':
-                        specialEvents++;
-                        break;
-                }
-            });
-        }
-    }
-    
-    // Atualizar elementos do DOM
-    const statNumbers = document.querySelectorAll('.stat-number');
-    if (statNumbers.length >= 4) {
-        statNumbers[0].textContent = totalEvents;
-        statNumbers[1].textContent = worshipEvents;
-        statNumbers[2].textContent = studyEvents;
-        statNumbers[3].textContent = specialEvents;
-    }
-}
-
-// Atualizar próximos eventos
-function updateUpcomingEvents() {
-    const today = new Date();
-    const upcomingEvents = [];
-    
-    // Coletar todos os eventos futuros
-    for (const dateKey in events) {
-        const eventDate = new Date(dateKey);
-        if (eventDate >= today) {
-            events[dateKey].forEach(event => {
-                upcomingEvents.push({
-                    ...event,
-                    date: eventDate
-                });
-            });
-        }
-    }
-    
-    // Ordenar por data
-    upcomingEvents.sort((a, b) => a.date - b.date);
-    
-    // Pegar apenas os próximos 4 eventos
-    const nextEvents = upcomingEvents.slice(0, 4);
-    
-    // Atualizar interface
-    const container = document.querySelector('.upcoming-events');
-    if (container) {
-        container.innerHTML = '';
         
-        nextEvents.forEach(event => {
-            const eventElement = document.createElement('div');
-            eventElement.className = 'upcoming-event p-3 mb-3';
-            eventElement.innerHTML = `
-                <div class="d-flex gap-3">
-                    <div class="text-center" style="min-width: 50px;">
-                        <div class="upcoming-day">${event.date.getDate()}</div>
-                        <div class="upcoming-month">${monthNames[event.date.getMonth()].substr(0, 3)}</div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <h6 class="mb-1">${event.title}</h6>
-                        <small class="text-muted">${dayNames[event.date.getDay()]}, ${event.time} - ${event.location}</small>
+        modal.show();
+    }
+
+    // Salvar evento
+    saveEvent() {
+        const form = document.getElementById('eventForm');
+        const title = document.getElementById('eventTitle').value;
+        const date = document.getElementById('eventDate').value;
+        const time = document.getElementById('eventTime').value;
+        const type = document.getElementById('eventType').value;
+        const location = document.getElementById('eventLocation').value;
+
+        if (!title || !date || !time || !type || !location) {
+            alert('Por favor, preencha todos os campos!');
+            return;
+        }
+
+        const eventData = {
+            id: form.dataset.editMode ? parseInt(form.dataset.eventId) : Date.now(),
+            title,
+            time,
+            type,
+            location
+        };
+
+        if (form.dataset.editMode) {
+            // Editar evento existente
+            const oldDate = form.dataset.eventDate;
+            this.updateEvent(oldDate, eventData, date);
+        } else {
+            // Adicionar novo evento
+            this.addEvent(date, eventData);
+        }
+
+        // Fechar modal
+        bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+        
+        // Atualizar interface
+        this.renderCalendar();
+        this.updateTodayEvents();
+        this.updateUpcomingEvents();
+        this.updateStats();
+    }
+
+    // Adicionar evento
+    addEvent(date, eventData) {
+        if (!this.events[date]) {
+            this.events[date] = [];
+        }
+        this.events[date].push(eventData);
+        this.saveEvents();
+    }
+
+    // Atualizar evento
+    updateEvent(oldDate, eventData, newDate) {
+        // Remover do date antigo
+        if (this.events[oldDate]) {
+            this.events[oldDate] = this.events[oldDate].filter(e => e.id !== eventData.id);
+            if (this.events[oldDate].length === 0) {
+                delete this.events[oldDate];
+            }
+        }
+        
+        // Adicionar no novo date
+        if (!this.events[newDate]) {
+            this.events[newDate] = [];
+        }
+        this.events[newDate].push(eventData);
+        this.saveEvents();
+    }
+
+    // Editar evento
+    editEvent(dateStr, eventId) {
+        const event = this.events[dateStr]?.find(e => e.id === eventId);
+        if (event) {
+            this.openEventModal(event, dateStr);
+        }
+    }
+
+    // Navegar para data específica do evento
+    goToEventDate(dateStr) {
+        const eventDate = new Date(dateStr);
+        this.currentDate = new Date(eventDate.getFullYear(), eventDate.getMonth(), 1);
+        this.renderCalendar();
+        
+        // Selecionar o dia automaticamente após um pequeno delay
+        setTimeout(() => {
+            const dayCell = this.findDayCell(eventDate);
+            if (dayCell) {
+                this.selectDate(eventDate, dayCell);
+                dayCell.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 100);
+        
+        this.updateTodayEvents();
+        this.updateUpcomingEvents();
+        this.updateStats();
+    }
+
+    // Encontrar célula do dia específico
+    findDayCell(targetDate) {
+        const dayCells = document.querySelectorAll('.day-cell');
+        const targetDay = targetDate.getDate();
+        const targetMonth = targetDate.getMonth();
+        
+        for (let cell of dayCells) {
+            const dayNumber = cell.querySelector('.day-number');
+            if (dayNumber && parseInt(dayNumber.textContent) === targetDay) {
+                // Verificar se é do mês correto (não other-month)
+                if (!cell.classList.contains('other-month')) {
+                    return cell;
+                }
+            }
+        }
+        return null;
+    }
+
+    // Mostrar detalhes do evento
+    showEventDetails(dateStr, eventId) {
+        const event = this.events[dateStr]?.find(e => e.id === eventId);
+        if (!event) return;
+
+        const eventDate = new Date(dateStr);
+        const formattedDate = eventDate.toLocaleDateString('pt-BR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Criar modal de detalhes
+        const detailsModal = `
+            <div class="modal fade" id="eventDetailsModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: ${this.eventTypes[event.type].color}; color: white;">
+                            <h5 class="modal-title">
+                                <i class="bi bi-calendar-event me-2"></i>
+                                Detalhes do Evento
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="event-detail-card">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <h4 class="text-primary mb-3">${event.title}</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-item">
+                                            <i class="bi bi-calendar3 text-muted me-2"></i>
+                                            <strong>Data:</strong><br>
+                                            <span class="ms-4">${formattedDate}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-item">
+                                            <i class="bi bi-clock text-muted me-2"></i>
+                                            <strong>Horário:</strong><br>
+                                            <span class="ms-4">${event.time}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-item">
+                                            <i class="bi bi-geo-alt text-muted me-2"></i>
+                                            <strong>Local:</strong><br>
+                                            <span class="ms-4">${event.location}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-item">
+                                            <i class="bi bi-tag text-muted me-2"></i>
+                                            <strong>Categoria:</strong><br>
+                                            <span class="badge ms-4" style="background-color: ${this.eventTypes[event.type].color}">
+                                                ${this.eventTypes[event.type].name}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="detail-item">
+                                            <i class="bi bi-hourglass-split text-muted me-2"></i>
+                                            <strong>Tempo restante:</strong><br>
+                                            <span class="ms-4 text-info">${this.getTimeUntilEvent(dateStr, event.time)}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" onclick="calendar.goToEventDate('${dateStr}')">
+                                <i class="bi bi-calendar-check me-1"></i>
+                                Ver no Calendário
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" onclick="calendar.editEvent('${dateStr}', ${event.id}); bootstrap.Modal.getInstance(document.getElementById('eventDetailsModal')).hide();">
+                                <i class="bi bi-pencil me-1"></i>
+                                Editar
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        </div>
                     </div>
                 </div>
-            `;
-            container.appendChild(eventElement);
-        });
+            </div>
+        `;
+
+        // Remover modal existente se houver
+        const existingModal = document.getElementById('eventDetailsModal');
+        if (existingModal) {
+            existingModal.remove();
+        }
+
+        // Adicionar novo modal
+        document.body.insertAdjacentHTML('beforeend', detailsModal);
         
-        if (nextEvents.length === 0) {
-            container.innerHTML = '<p class="text-muted text-center">Nenhum evento programado</p>';
+        // Mostrar modal
+        const modal = new bootstrap.Modal(document.getElementById('eventDetailsModal'));
+        modal.show();
+
+        // Remover modal do DOM quando fechado
+        document.getElementById('eventDetailsModal').addEventListener('hidden.bs.modal', function() {
+            this.remove();
+        });
+    }
+
+    // Calcular tempo até o evento
+    getTimeUntilEvent(dateStr, time) {
+        const eventDateTime = new Date(`${dateStr}T${time}`);
+        const now = new Date();
+        const diffMs = eventDateTime.getTime() - now.getTime();
+
+        if (diffMs < 0) {
+            return 'Evento já ocorreu';
+        }
+
+        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+        if (days > 0) {
+            return `${days} dia${days > 1 ? 's' : ''} e ${hours} hora${hours !== 1 ? 's' : ''}`;
+        } else if (hours > 0) {
+            return `${hours} hora${hours !== 1 ? 's' : ''} e ${minutes} minuto${minutes !== 1 ? 's' : ''}`;
+        } else {
+            return `${minutes} minuto${minutes !== 1 ? 's' : ''}`;
         }
     }
 }
 
-// Mostrar notificação
-function showNotification(message, type = 'info') {
-    const alertClass = type === 'success' ? 'alert-success' : 
-                      type === 'error' ? 'alert-danger' : 'alert-info';
-    
-    const notification = document.createElement('div');
-    notification.className = `alert ${alertClass} alert-dismissible fade show position-fixed`;
-    notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
-    notification.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Remover automaticamente após 3 segundos
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.remove();
-        }
-    }, 3000);
+// Inicializar calendário quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    window.calendar = new EventCalendar();
+});
+
+// Funções globais para compatibilidade
+function previousMonth() {
+    if (window.calendar) {
+        window.calendar.currentDate.setMonth(window.calendar.currentDate.getMonth() - 1);
+        window.calendar.renderCalendar();
+        window.calendar.updateTodayEvents();
+        window.calendar.updateUpcomingEvents();
+        window.calendar.updateStats();
+    }
 }
 
-// Funções auxiliares
-function formatDateKey(date) {
-    return date.toISOString().split('T')[0];
+function nextMonth() {
+    if (window.calendar) {
+        window.calendar.currentDate.setMonth(window.calendar.currentDate.getMonth() + 1);
+        window.calendar.renderCalendar();
+        window.calendar.updateTodayEvents();
+        window.calendar.updateUpcomingEvents();
+        window.calendar.updateStats();
+    }
 }
-
-function isDateToday(date) {
-    const today = new Date();
-    return date.toDateString() === today.toDateString();
-}
-
-// Exportar funções para uso global
-window.previousMonth = previousMonth;
-window.nextMonth = nextMonth;
-window.editEvent = editEvent;
-window.deleteEvent = deleteEvent;
-window.saveEvent = saveEvent;
-window.updateEvent = updateEvent;

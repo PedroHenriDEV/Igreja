@@ -102,7 +102,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contato.html">
+              <a class="nav-link" href="postagens.html">
                 <i class="bi bi-journal-text"></i>
                 Postagens
               </a>
@@ -153,26 +153,26 @@
                 <span><i class="bi bi-star"></i> 24 anos de história</span>
               </div>
               <div class="article-text">
-                <p class="fs-5">•Quem somos? O Mire é uma comunidade de fé iniciada em 2001 que busca viver o evangelho
+                <p class="fs-5">• Quem somos? O Mire é uma comunidade de fé iniciada em 2001 que busca viver o evangelho
                   de Cristo de
                   forma prática e relacional, estruturada em pequenos grupos chamados células, onde os membros se
                   apoiam, crescem espiritualmente e compartilham a mensagem de Cristo.<br><br>
-                  •Visão: Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua Palavra, conduzindo
+                  • Visão: Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua Palavra, conduzindo
                   pessoas à plena comunhão com Cristo e ao serviço ao próximo. Transmitindo as escrituras de forma
                   genuína, levantando um povo adorador, fazendo de cada membro um discípulo de Cristo e de cada casa uma
                   extensão da igreja. Levando ao retorno da origem onde todos são a imagem e semelhança de Deus (Gn1:26)
 
                 </p>
 
-                <p class="fs-5">•Missão: Direcionar pessoas a um relacionamento saudável com Deus e com o próximo,
+                <p class="fs-5">• Missão: Direcionar pessoas a um relacionamento saudável com Deus e com o próximo,
                   fortalecendo o
                   conhecimento das Escrituras e promovendo a transformação de vidas, sendo uma igreja renovada pelo
                   Espírito Santo.<br><br>
 
-                  •Valores: Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando crescer de modo
+                  • Valores: Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando crescer de modo
                   relevante para o Reino de Deus, através dos pilares Ganhar, consolidar, discipular e enviar.<br><br>
 
-                  •Propósito: Ser uma comunidade acolhedora e discipuladora, onde cada pessoa encontra suporte,
+                  • Propósito: Ser uma comunidade acolhedora e discipuladora, onde cada pessoa encontra suporte,
                   crescimento espiritual e encorajamento para viver o evangelho. Multiplicamos vidas transformadas por
                   Cristo, levando amor e esperança ao mundo. O Mire nasceu em Belo Horizonte em 2001, a igreja tem por
                   objetivo promover e contribuir com o desenvolvimento pessoal e social.
@@ -241,29 +241,36 @@
       </div>
     </div>
 
-    <!-- Galeria -->
     <section class="container my-5">
       <div class="card custom-card p-5 fade-in">
         <h2 class="text-center display-6 mb-5">Nossa Comunidade</h2>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3">
+
+        <!-- Botões -->
+        <div class="d-flex justify-content-between mb-3">
+          <button class="btn btn-outline-secondary" onclick="scrollGaleria(-1)">&#8592; Anterior</button>
+          <button class="btn btn-outline-secondary" onclick="scrollGaleria(1)">Próximo &#8594;</button>
+        </div>
+
+        <!-- Carrossel horizontal -->
+        <div id="galeriaScroll" class="d-flex overflow-auto flex-nowrap">
+          <div class="col-md-6 col-lg-3 me-3 flex-shrink-0">
             <div class="gallery-item">
-              <img src="imagens/aaa.jpg" alt="Imagem 1">
+              <img src="imagens/aaa.jpg" alt="Imagem 1" class="img-fluid rounded">
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-3 me-3 flex-shrink-0">
             <div class="gallery-item">
-              <img src="imagens/sobre3.jpg" alt="Imagem 2">
+              <img src="imagens/sobre3.jpg" alt="Imagem 2" class="img-fluid rounded">
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-3 me-3 flex-shrink-0">
             <div class="gallery-item">
-              <img src="imagens/Pascoa.jpg" alt="Imagem 3">
+              <img src="imagens/Pascoa.jpg" alt="Imagem 3" class="img-fluid rounded">
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="gallery-item">
-              <!-- Deixe vazio se quiser ver o emoji 📷 -->
+          <div class="col-md-6 col-lg-3 flex-shrink-0">
+            <div class="gallery-item d-flex justify-content-center align-items-center" style="height: 100%;">
+              <span style="font-size: 3rem;">📷</span>
             </div>
           </div>
         </div>

@@ -76,3 +76,33 @@
                 });
             }, 300);
         });
+
+        function scrollGaleria(direction) {
+  const galeria = document.getElementById("galeriaScroll");
+  const scrollAmount = 300 * direction;
+  galeria.scrollBy({ left: scrollAmount, behavior: "smooth" });
+}
+
+// Upload dinâmico para galeria
+document.getElementById("uploadForm")?.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const input = document.getElementById("fotoInput");
+  const file = input.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const imgUrl = e.target.result;
+
+    const col = document.createElement("div");
+    col.className = "col-md-6 col-lg-3 me-3 flex-shrink-0";
+    col.innerHTML = `
+      <div class="gallery-item">
+        <img src="${imgUrl}" alt="Nova imagem" class="img-fluid rounded">
+      </div>
+    `;
+    document.getElementById("galeriaScroll").appendChild(col);
+    input.value = "";
+  };
+  reader.readAsDataURL(file);
+});

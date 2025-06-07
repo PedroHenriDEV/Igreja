@@ -98,7 +98,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contato.html">
+                            <a class="nav-link" href="postagens.html">
                                 <i class="bi bi-journal-text"></i>
                                 Postagens
                             </a>
@@ -283,7 +283,7 @@
                     <div class="col-12 col-md-6 col-lg-6 fade-in">
                         <div
                             class="card glass-card service-card border-0 rounded-4 p-4 text-center h-100 pulse-animation">
-                            <div class="service-icon" style="background: var(--secondary-gradient);">
+                            <div class="service-icon">
                                 <i class="bi bi-people"></i>
                             </div>
                             <h4 class="fw-bold mb-3">Faça Parte</h4>
@@ -294,6 +294,49 @@
                             <a href="#participar" class="btn btn-primary rounded-pill px-4">
                                 <i class="bi bi-arrow-right me-2"></i>Participar
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria da Mídia com Upload -->
+        <section class="container my-5">
+            <div class="card custom-card p-5 fade-in">
+                <h2 class="text-center display-6 mb-5">Galeria da Mídia</h2>
+
+                <!-- Botão de upload -->
+                <form id="uploadForm" class="mb-4">
+                    <label for="fotoInput" class="form-label">Adicionar nova foto:</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="fotoInput" accept="image/*" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> Adicionar
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Botões -->
+                <div class="d-flex justify-content-between mb-3">
+                    <button class="btn btn-outline-secondary" onclick="scrollGaleria(-1)">&#8592; Anterior</button>
+                    <button class="btn btn-outline-secondary" onclick="scrollGaleria(1)">Próximo &#8594;</button>
+                </div>
+
+                <!-- Carrossel horizontal -->
+                <div id="galeriaScroll" class="d-flex overflow-auto flex-nowrap">
+                    <div class="col-md-6 col-lg-3 me-3 flex-shrink-0">
+                        <div class="gallery-item">
+                            <img src="imagens/aaa.jpg" alt="Imagem 1" class="img-fluid rounded">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 me-3 flex-shrink-0">
+                        <div class="gallery-item">
+                            <img src="imagens/sobre3.jpg" alt="Imagem 2" class="img-fluid rounded">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 me-3 flex-shrink-0">
+                        <div class="gallery-item">
+                            <img src="imagens/Pascoa.jpg" alt="Imagem 3" class="img-fluid rounded">
                         </div>
                     </div>
                 </div>
@@ -315,18 +358,14 @@
                                 criatividade para glorificar a Deus!</p>
 
                             <div class="row g-3 justify-content-center">
-                                
+
                                 <div class="col-auto">
                                     <a href="https://wa.me/5511999999999"
                                         class="btn btn-success btn-lg rounded-pill px-4">
                                         <i class="bi bi-whatsapp me-2"></i>WhatsApp
                                     </a>
                                 </div>
-                                <div class="col-auto">
-                                    <a href="#" class="btn btn-outline-primary btn-lg rounded-pill px-4">
-                                        <i class="bi bi-person-plus me-2"></i>Cadastro
-                                    </a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -334,7 +373,7 @@
             </div>
         </section>
 
-        
+
 
 
 
