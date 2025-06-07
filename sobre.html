@@ -8,8 +8,9 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/estilo.css" type="text/css" />
+  <link rel="stylesheet" href="css/sobre.css" type="text/css" />
   <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +44,7 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul class="navbar-nav gap-4">
             <li class="nav-item">
-              <a class="nav-link active" href="celulas.html">
+              <a class="nav-link" href="celulas.html">
                 <i class="bi bi-people"></i>
                 Células
               </a>
@@ -102,8 +103,8 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contato.html">
-                <i class="bi bi-telephone"></i>
-                Contato
+                <i class="bi bi-journal-text"></i>
+                Postagens
               </a>
             </li>
           </ul>
@@ -118,150 +119,222 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="container-fluid py-5 text-center mt-5">
+    <div class="py-5 mt-5" style="width: 200px;"></div>
+
+    <section class="hero-section d-flex align-items-center">
       <div class="container">
-        <div class="d-flex justify-content-center align-items-center mt-5 gap-2 flex-wrap">
-          <h1 class="display-6 fw-bold m-0">Sobre a igreja</h1>
-          <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
-        </div>
-
-        <div class="section-divider"></div>
-      </div>
-    </section>
-
-    <!-- Seção de Estatísticas -->
-    <section class="stats-section">
-      <h2 class="section-title">Nossa Jornada</h2>
-
-      <div class="stats-container">
-        <div class="stats-card">
-          <div class="stats-number" data-target="24">0</div>
-          <h5 class="stats-label">Anos de História</h5>
-        </div>
-
-        <div class="stats-card">
-          <div class="stats-number" data-target="300" data-plus="true">0</div>
-          <h5 class="stats-label">Membros</h5>
-        </div>
-
-        <div class="stats-card">
-          <div class="stats-number" data-target="27">0</div>
-          <h5 class="stats-label">Células Ativas</h5>
-        </div>
-
-        <div class="stats-card">
-          <div class="stats-number" data-target="8">0</div>
-          <h5 class="stats-label">Ministérios</h5>
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <div class="hero-content">
+              <h1 class="display-3 fw-bold mb-4">Nossa Igreja</h1>
+              <p class=" fs-4 lead">Um lugar de fé, comunhão e esperança. Venha fazer parte da nossa família espiritual.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="py-5 sobre-igreja">
-      <div class="container"> <!-- container para controlar largura -->
-        <div class="row align-items-center">
-          <!-- Coluna do texto -->
-          <div class="col-md-6 text-start lh-lg px-4">
-            <h2 class="fw-bold display-5">• Quem Somos?</h2>  <br> 
-            <p class="fs-3">
-              O MIRE é uma comunidade de fé iniciada em 2001<br>
-              que busca viver o evangelho de Cristo<br>
-              de forma prática e relacional,<br>
-              estruturada em pequenos grupos chamados células,<br>
-              onde os membros se apoiam, crescem espiritualmente<br>
-              e compartilham a mensagem de Cristo.
-            </p>
-          </div>
-
-          <!-- Coluna da imagem -->
-          <div class="col-md-6 text-center">
-            <img src="imagens/Sobre.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
-          </div>
-        </div>
-
-        <!-- Coluna da imagem -->
-        <div class="row align-items-center">
-          <!-- Coluna da imagem -->
-          <div class="col-md-6 text-center">
-            <img src="imagens/Pascoa.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
-          </div>
-
-          <!-- Coluna do texto -->
-          <div class="col-md-6 text-end lh-lg px-4">
-            <h2 class="fw-bold display-5">• Visão</h2>  <br> 
-            <p class="fs-3">
-              Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua Palavra, conduzindo pessoas à
-              plena comunhão com Cristo e ao serviço ao próximo. Transmitindo as escrituras de forma genuína, levantando
-              um povo adorador, fazendo de cada membro um discípulo de Cristo e de cada casa uma extensão da igreja.
-              Levando ao retorno da origem onde todos são a imagem e semelhança de Deus (Gn1:26)
-
-            </p>
-          </div>
-        </div>
-
-        <!-- Coluna da imagem -->
-        <div class="row align-items-center">
-          <!-- Coluna da imagem -->
-          <div class="col-md-6 text-center">
-            <img src="imagens/l2.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
-          </div>
-
-          <!-- Coluna do texto -->
-          <div class="col-md-6 text-end lh-lg px-4">
-            <h2 class="fw-bold display-5">• Missão</h2>  <br> 
-            <p class="fs-3">
-
-              Direcionar pessoas a um relacionamento saudável com Deus e com o próximo, fortalecendo o conhecimento das
-              Escrituras e promovendo a transformação de vidas, sendo uma igreja renovada pelo Espírito Santo.
-
-
-            </p>
-          </div>
-        </div>
-
-        <div class="container"> <!-- container para controlar largura -->
-          <div class="row align-items-center">
-            <!-- Coluna do texto -->
-            <div class="col-md-6 text-start lh-lg px-4">
-              <h2 class="fw-bold display-5">•Valores</h2>  <br> 
-              <p class="fs-3">
-                Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando crescer de modo relevante
-                para o Reino de Deus, através dos pilares Ganhar, consolidar, discipular e enviar.
-
-              </p>
+    <!-- Main Content -->
+    <div class="container my-5">
+      <div class="row g-4">
+        <!-- Artigo Principal -->
+        <div class="col-lg-8">
+          <article class="card custom-card fade-in">
+            <div class="main-article-img">
+              <img src="imagens/Sobre.jpg" alt="Foto da Igreja">
             </div>
 
-            <!-- Coluna da imagem -->
-            <div class="col-md-6 text-center">
-              <img src="imagens/aaa.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
+            <div class="card-body p-4">
+              <h2 class="article-title h3 mb-3">Nossa História e Missão</h2>
+              <div class="d-flex flex-wrap gap-3 mb-4 text-muted small fs-4">
+                <span><i class="bi bi-calendar3"></i> Fundada em 2001</span>
+                <span><i class="bi bi-people"></i> Mais de 300 membros</span>
+                <span><i class="bi bi-star"></i> 24 anos de história</span>
+              </div>
+              <div class="article-text">
+                <p class="fs-5">•Quem somos? O Mire é uma comunidade de fé iniciada em 2001 que busca viver o evangelho
+                  de Cristo de
+                  forma prática e relacional, estruturada em pequenos grupos chamados células, onde os membros se
+                  apoiam, crescem espiritualmente e compartilham a mensagem de Cristo.<br><br>
+                  •Visão: Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua Palavra, conduzindo
+                  pessoas à plena comunhão com Cristo e ao serviço ao próximo. Transmitindo as escrituras de forma
+                  genuína, levantando um povo adorador, fazendo de cada membro um discípulo de Cristo e de cada casa uma
+                  extensão da igreja. Levando ao retorno da origem onde todos são a imagem e semelhança de Deus (Gn1:26)
+
+                </p>
+
+                <p class="fs-5">•Missão: Direcionar pessoas a um relacionamento saudável com Deus e com o próximo,
+                  fortalecendo o
+                  conhecimento das Escrituras e promovendo a transformação de vidas, sendo uma igreja renovada pelo
+                  Espírito Santo.<br><br>
+
+                  •Valores: Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando crescer de modo
+                  relevante para o Reino de Deus, através dos pilares Ganhar, consolidar, discipular e enviar.<br><br>
+
+                  •Propósito: Ser uma comunidade acolhedora e discipuladora, onde cada pessoa encontra suporte,
+                  crescimento espiritual e encorajamento para viver o evangelho. Multiplicamos vidas transformadas por
+                  Cristo, levando amor e esperança ao mundo. O Mire nasceu em Belo Horizonte em 2001, a igreja tem por
+                  objetivo promover e contribuir com o desenvolvimento pessoal e social.
+                </p>
+              </div>
             </div>
-          </div>
-
-
-          <div class="row align-items-center">
-            <!-- Coluna da imagem (agora à esquerda) -->
-            <div class="col-md-6 text-center">
-              <img src="imagens/l2.jpg" alt="Foto MIRE" class="img-fluid rounded" style="max-width: 100%;">
-            </div>
-
-            <!-- Coluna do texto (agora à direita) -->
-            <div class="col-md-6 text-end lh-lg px-4">
-              <h2 class="fw-bold display-5">• Propósito </h2> <br> 
-              <p class="fs-3">
-                Ser uma comunidade acolhedora e discipuladora, onde cada pessoa encontra suporte, crescimento espiritual e encorajamento para viver o evangelho. Multiplicamos vidas transformadas por Cristo, levando amor e esperança ao mundo.  O Mire nasceu em Belo Horizonte em 2001, a igreja tem por objetivo promover e contribuir com o desenvolvimento pessoal e social.
-
-              </p>
-            </div>
-          </div> 
-          <div class="text-center mt-5">
-            <h2>"Mire, simples em ser e grande em acolher."</h2>
-          </div>
-
+          </article>
         </div>
 
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="d-flex flex-column gap-4">
+            <!-- Próximos Eventos -->
+            <div class="sidebar-card p-4 fade-in">
+              <h3 class="sidebar-title h5 mb-4">Próximos Eventos</h3>
+              <div class="event-item">
+                <div class="event-date">Domingo, 15 de Junho</div>
+                <div class="event-title">Culto de Celebração - 10h</div>
+              </div>
+              <div class="event-item">
+                <div class="event-date">Quarta, 18 de Junho</div>
+                <div class="event-title">Estudo Bíblico - 19h30</div>
+              </div>
+              <div class="event-item">
+                <div class="event-date">Sábado, 21 de Junho</div>
+                <div class="event-title">Retiro Jovens - 14h</div>
+              </div>
+              <div class="event-item">
+                <div class="event-date">Domingo, 22 de Junho</div>
+                <div class="event-title">Batismo - 16h</div>
+              </div>
+            </div>
 
+            <!-- Ministérios -->
+            <div class="sidebar-card p-4 fade-in">
+              <h3 class="sidebar-title h5 mb-4">Nossos Ministérios</h3>
+              <ul class="ministry-list">
+                <li><span>🎵</span> Ministério de Louvor</li>
+                <li><span>👶</span> Ministério Kids</li>
+                <li><span>🎯</span> Ministério Jovem</li>
+                <li><span>🤝</span> Ministério Social</li>
+                <li><span>📖</span> Ministério de Diaconato</li>
+                <li><span>💃</span> Ministério de Dança</li>
+                <li><span>🎥</span> Ministério de Mídia</li>
+              </ul>
+            </div>
+
+            <!-- Horários -->
+            <div class="sidebar-card p-4 fade-in">
+              <h3 class="sidebar-title h5 mb-4">Horários dos Cultos</h3>
+              <div class="lh-lg">
+                <strong>Sábados:</strong><br>
+                <span class="text-muted">🔥 Culto Extraordinário - 19:30</span> <br>
+
+                <strong>Domingos:</strong><br>
+                <span class="text-muted">👨🏽‍👩🏽‍👧🏽‍👦🏽 Culto da Família - 19:00</span><br>
+
+                <strong>Terças:</strong><br>
+                <span class="text-muted">🙏🏽 Célula nas Casas - 20:00</span><br><br>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Galeria -->
+    <section class="container my-5">
+      <div class="card custom-card p-5 fade-in">
+        <h2 class="text-center display-6 mb-5">Nossa Comunidade</h2>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="gallery-item">
+              <img src="imagens/aaa.jpg" alt="Imagem 1">
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="gallery-item">
+              <img src="imagens/sobre3.jpg" alt="Imagem 2">
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="gallery-item">
+              <img src="imagens/Pascoa.jpg" alt="Imagem 3">
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="gallery-item">
+              <!-- Deixe vazio se quiser ver o emoji 📷 -->
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
+
+    <!-- Contato -->
+    <section class="contact-section py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-6 mb-3">Venha nos Visitar</h2>
+          <p class="lead">Você é sempre bem-vindo em nossa igreja. Venha conhecer nossa comunidade!</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card contact-card h-100 text-center p-4">
+              <div class="card-body">
+                <h4 class="h5 mb-3">
+                  <i class="bi bi-geo-alt fs-3 d-block mb-2"></i>
+                  Endereço
+                </h4>
+                <p class="mb-0">
+                  Rua da Esperança, 123<br>
+                  Centro - Sua Cidade<br>
+                  CEP: 12345-678
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card contact-card h-100 text-center p-4">
+              <div class="card-body">
+                <h4 class="h5 mb-3">
+                  <i class="bi bi-telephone fs-3 d-block mb-2"></i>
+                  Contato
+                </h4>
+                <p class="mb-0">
+                  Telefone: (11) 1234-5678<br>
+                  WhatsApp: (11) 99999-8888<br>
+                  Email: contato@igreja.com
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card contact-card h-100 text-center p-4">
+              <div class="card-body">
+                <h4 class="h5 mb-3">
+                  <i class="bi bi-share fs-3 d-block mb-2"></i>
+                  Redes Sociais
+                </h4>
+                <p class="mb-0">
+                  Facebook: /nossaigreja<br>
+                  Instagram: @nossa_igreja<br>
+                  YouTube: Nossa Igreja
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botão Flutuante -->
+    <button class="btn btn-floating" onclick="scrollToTop()">
+      <i class="bi bi-arrow-up"></i>
+    </button>
 
 
   </main>

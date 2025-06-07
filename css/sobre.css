@@ -1,0 +1,248 @@
+ :root {
+            --primary-color: #DDDDDD;
+            --secondary-color: #222222;
+            --accent-color: #000;
+            --text-dark: #2c3e50;
+            --text-muted: #393E46;
+        }
+body { 
+  background-color: #393E46;
+  color: #fff;
+  background-image: linear-gradient(#393E46, rgba(0, 0, 0, 0.3)),
+   url('../imagens/download.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+        /* Hero Section */
+        .hero-section {
+            height: 60vh;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        /* Cards personalizados */
+        .custom-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+      .main-article-img {
+  width: 100%; /* Use 100% para se adaptar à largura do card */
+  height: 300px;
+  overflow: hidden;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  position: relative;
+}
+
+.main-article-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+/* Remova o ::before se não quiser o emoji */
+.main-article-img::before {
+  content: none;
+}
+
+
+        .article-title {
+            color: var(--text-dark);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            color: #000;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .sidebar-title {
+            color: var(--text-dark);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .event-item {
+            border-bottom: 1px solid #dee2e6;
+            padding: 15px 0;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+       /* Galeria */
+.gallery-item {
+  height: 200px;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  display: block;
+}
+
+/* Zoom on hover */
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+/* Gradientes */
+.gallery-item:nth-child(1) {
+  background: linear-gradient(45deg, #222831 0%, #fecfef 100%);
+}
+.gallery-item:nth-child(2) {
+  background: linear-gradient(45deg, #393E46 0%, #fed6e3 100%);
+}
+.gallery-item:nth-child(3) {
+  background: linear-gradient(45deg, #222831 0%, #fef9d7 100%);
+}
+.gallery-item:nth-child(4) {
+  background: linear-gradient(45deg, #393E46 0%, #DDDDDD 100%);
+}
+
+/* Emoji 📷 apenas quando não há imagem */
+.gallery-item:not(:has(img))::before {
+  content: '📷';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  opacity: 0.6;
+}
+
+
+        /* Seção de contato */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Botão flutuante */
+        .btn-floating {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .btn-floating:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* Lista personalizada */
+        .ministry-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ministry-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ministry-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
