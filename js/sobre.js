@@ -213,3 +213,67 @@ document.querySelectorAll('.view-btn').forEach(btn => {
 updateTodayDate();
 generateCalendar(currentMonth, currentYear);
 setInterval(updateTodayDate, 60000);
+
+// Carregar imagens salvas no LocalStorage ao carregar a página
+  window.onload = function () {
+    const imagensSalvas = JSON.parse(localStorage.getItem('galeriaImagens')) || [];
+    imagensSalvas.forEach(url => adicionarImagemNaGaleria(url));
+  };
+
+  // Upload de imagem
+  function uploadImagem() {
+    const input = document.getElementById('uploadInput');
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const url = e.target.result;
+        adicionarImagemNaGaleria(url);
+        salvarImagem(url);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  // Adiciona imagem na galeria
+ function adicionarImagemNaGaleria(url) {
+  const galeria = document.getElementById('galeriaScroll');
+  const iconeFinal = galeria.lastElementChild;
+
+  const div = document.createElement('div');
+  div.className = 'col-md-6 col-lg-3 me-3 flex-shrink-0';
+  div.innerHTML = `
+    <div class="gallery-item position-relative">
+      <img src="${url}" alt="Imagem da comunidade" class="img-fluid rounded">
+      <button class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1" onclick="removerImagem(this, '${url}')">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+  `;
+  galeria.insertBefore(div, iconeFinal);
+}
+
+  // Salva imagem no LocalStorage
+  function salvarImagem(url) {
+    const imagens = JSON.parse(localStorage.getItem('galeriaImagens')) || [];
+    imagens.push(url);
+    localStorage.setItem('galeriaImagens', JSON.stringify(imagens));
+  }
+
+  // Remove imagem da galeria e do LocalStorage
+  function removerImagem(botao, url) {
+    botao.parentElement.parentElement.remove();
+
+    let imagens = JSON.parse(localStorage.getItem('galeriaImagens')) || [];
+    imagens = imagens.filter(img => img !== url);
+    localStorage.setItem('galeriaImagens', JSON.stringify(imagens));
+  }
+
+  // Rolagem da galeria
+  function scrollGaleria(direction) {
+    const galeria = document.getElementById('galeriaScroll');
+    const scrollAmount = 300;
+    galeria.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }

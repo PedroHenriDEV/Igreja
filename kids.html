@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIDS</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/estilo.css" type="text/css" />
+    <link rel="stylesheet" href="css/kids.css" type="text/css" />
+    <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="favicon/favicon_mire_v2.ico" type="image/x-icon">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow-1 position-relative">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg" id="mainNavbar">
+            <div class="container">
+                <a class="navbar-brand neon-logo" href="index.html">
+                    <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav gap-4">
+                        <li class="nav-item">
+                            <a class="nav-link " href="sobre.html">
+                                <i class="bi bi-building"></i>
+                                Sobre
+                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link " href="celulas.html">
+                                <i class="bi bi-people"></i>
+                                Células
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="extraordinario.html" role="button" aria-expanded="false">
+                                <i class="bi bi-star"></i>
+                                Extraordinário
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="eventos.html">
+                                <i class="bi bi-calendar-event"></i>
+                                Eventos
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-heart"></i>
+                                Ministérios
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href='louvor.html'>
+                                        <i class="bi bi-music-note"></i>
+                                        Louvor
+                                    </a></li>
+                                <li><a class="dropdown-item" href="danca.html">
+                                        <i class="bi bi-person-arms-up"></i>
+                                        Dança
+                                    </a></li>
+                                <li><a class="dropdown-item active" href="#">
+                                        <i class="bi bi-balloon"></i>
+                                        Kids
+                                    </a></li>
+                                <li><a class="dropdown-item" href="diaconato.html">
+                                        <i class="bi bi-shield-check"></i>
+                                        Diaconato
+                                    </a></li>
+                                <li><a class="dropdown-item" href="midia.html">
+                                        <i class="bi bi-camera-video"></i>
+                                        Mídia
+                                    </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="postagens.html">
+                                <i class="bi bi-journal-text"></i>
+                                Postagens
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex ms-auto">
+                        <a href="login.html" class="neon-btn">
+                            <i class="bi bi-person"></i>
+                            Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="py-5 mt-5" style="width: 200px;"></div>
+
+
+
+
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 hero-content">
+                        <h1 class="hero-title">Ministério Kids</h1>
+                        <p class="hero-subtitle">Crescendo na fé, aprendendo com amor e brincando juntos!</p>
+                        <a href="#atividades" class="btn btn-custom btn-lg me-3">
+                            <i class="fas fa-play me-2"></i>Descobrir Mais
+                        </a>
+                        <a href="#contato" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-phone me-2"></i>Contato
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-center">
+                            <div class="d-inline-flex align-items-center justify-content-center"
+                                style="width: 300px; height: 300px; background: rgba(255,255,255,0.2); border-radius: 50%; backdrop-filter: blur(10px);">
+                                <i class="fas fa-child" style="font-size: 8rem; color: var(--dark-gray);"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon icon-1">
+                                <i class="fas fa-bible"></i>
+                            </div>
+                            <h4>Estudos Bíblicos</h4>
+                            <p class="text-muted">Histórias e ensinamentos adaptados para cada idade</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon icon-2">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <h4>Louvor Infantil</h4>
+                            <p class="text-muted">Cânticos e música para adorar a Deus com alegria</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon icon-3">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4>Atividades Criativas</h4>
+                            <p class="text-muted">Arte, teatro e brincadeiras educativas</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon icon-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Comunidade</h4>
+                            <p class="text-muted">Amizades e valores cristãos em família</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="py-5" style="background: var(--warm-gray);">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stats-counter">150+</div>
+                        <p class="text-muted">Crianças Ativas</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stats-counter">25+</div>
+                        <p class="text-muted">Voluntários</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stats-counter">5</div>
+                        <p class="text-muted">Faixas Etárias</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stats-counter">10</div>
+                        <p class="text-muted">Anos de Ministério</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section id="atividades" class="py-5">
+            <div class="container">
+                <h2 class="section-title">Nossas Atividades</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="activity-card">
+                            <div class="activity-image">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="p-4">
+                                <h4>Escola Bíblica Dominical</h4>
+                                <p class="text-muted">Lições bíblicas interativas e dinâmicas para todas as idades, com
+                                    atividades práticas e materiais didáticos especiais.</p>
+                                <small class="text-primary">Domingos às 9h</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="activity-card">
+                            <div class="activity-image">
+                                <i class="fas fa-theater-masks"></i>
+                            </div>
+                            <div class="p-4">
+                                <h4>Teatro e Dramatização</h4>
+                                <p class="text-muted">Peças teatrais e encenações que trazem as histórias bíblicas para
+                                    a vida das crianças de forma divertida.</p>
+                                <small class="text-primary">Sábados às 15h</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="activity-card">
+                            <div class="activity-image">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="p-4">
+                                <h4>Jogos e Brincadeiras</h4>
+                                <p class="text-muted">Atividades recreativas que ensinam valores cristãos através de
+                                    jogos cooperativos e brincadeiras educativas.</p>
+                                <small class="text-primary">Quartas às 19h</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="programacao" class="py-5" style="background: var(--accent-color);">
+            <div class="container">
+                <h2 class="section-title">Programação Semanal</h2>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="schedule-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-1">Domingo - Escola Bíblica</h5>
+                                    <p class="mb-0 text-muted">Estudo bíblico interativo por faixas etárias</p>
+                                </div>
+                                <span class="badge bg-secondary">9h às 10h</span>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-1">Quarta - Culto Infantil</h5>
+                                    <p class="mb-0 text-muted">Louvor, oração e atividades especiais</p>
+                                </div>
+                                <span class="badge bg-secondary">19h às 20h</span>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-1">Sábado - Atividades Recreativas</h5>
+                                    <p class="mb-0 text-muted">Jogos, brincadeiras e confraternização</p>
+                                </div>
+                                <span class="badge bg-secondary">15h às 17h</span>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-1">Eventos Especiais</h5>
+                                    <p class="mb-0 text-muted">Acampamentos, festa junina, natal e mais</p>
+                                </div>
+                                <span class="badge bg-secondary">Mensais</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="mb-4">Venha Fazer Parte da Nossa Família!</h2>
+                        <p class="lead mb-4">Cadastre seu filho e participe de uma comunidade que valoriza o crescimento
+                            espiritual e emocional das crianças.</p>
+                        <a href="#" class="btn btn-light btn-lg me-3">
+                            <i class="fas fa-user-plus me-2"></i>Inscrever Criança
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-heart me-2"></i>Ser Voluntário
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contato" class="py-5">
+            <div class="container">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon icon-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h5>Localização</h5>
+                            <p class="text-muted">Rua da Igreja, 123<br>Centro, Cidade - Estado</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon icon-2">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h5>Telefone</h5>
+                            <p class="text-muted">(11) 99999-9999<br>ministeriokids@igreja.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon icon-3">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h5>Horário de Atendimento</h5>
+                            <p class="text-muted">Seg à Sex: 8h às 17h<br>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <!-- Logo e Nome  -->
+                <div class="col-md-4 mb-4 text-center">
+                    <img src="imagens/download.png" alt="Logo da MIRE" style="max-width: 120px;" class="mb-2">
+                    <p class="text-center mb-0">&copy; 2025 MIRE - Todos os direitos reservados</p>
+                </div>
+
+                <!-- Contato e Endereço  -->
+                <div class="col-md-4 text-center">
+                    <h6 class="fw-bold">Endereço</h6>
+                    <p><i class="bi bi-geo-alt-fill me-2"></i>Rua Antônio Mariano de Abreu, 815 - Bairro Paulo VI - Belo
+                        Horizonte
+                    </p>
+                    <h6 class="fw-bold mt-3">Contato</h6>
+                    <p><i class="bi bi-telephone-fill me-2"></i>Telefone: (00) 1234-5678</p>
+                </div>
+
+                <!-- Redes Sociais -->
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold">Siga-nos</h6>
+                    <a href="https://www.instagram.com/mire12ofc/" class="text-white me-3" target="_blank">
+                        <i class="bi bi-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts Bootstrap e Vanta -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="js/kids.js"></script>
+
+</body>
+
+</html>

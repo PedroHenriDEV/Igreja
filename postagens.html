@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eventos</title>
+    <title>Postagens</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/estilo.css" type="text/css" />
-    <link rel="stylesheet" href="css/eventos.css" type="text/css" />
+    <link rel="stylesheet" href="css/postagens.css" type="text/css" />
     <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="favicon/favicon_mire_v2.ico" type="image/x-icon">
 
 </head>
 
@@ -24,100 +25,342 @@
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="flex-grow-1 position-relative">
 
-        
+
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg" id="mainNavbar">
-            <div class="container">
-                <a class="navbar-brand neon-logo" href="index.html">
-                    <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
-                </a>
+       <nav class="navbar navbar-expand-lg" id="mainNavbar">
+      <div class="container">
+          <a class="navbar-brand neon-logo" href="index.html">
+              <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
+            </a>
 
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav gap-4">
-                        <li class="nav-item">
-                            <a class="nav-link " href="celulas.html">
-                                <i class="bi bi-people"></i>
-                                Células
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="bi bi-calendar-heart"></i>
-                                Cultos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="louvor.html">
-                                        <i class="bi bi-star"></i>
-                                        Extraordinário
-                                    </a></li>
-                                <li><a class="dropdown-item" href="danca.html">
-                                        <i class="bi bi-house-heart"></i>
-                                        Família
-                                    </a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="eventos.html">
-                                <i class="bi bi-calendar-event"></i>
-                                Eventos
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="bi bi-heart"></i>
-                                Ministérios
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="louvor.html">
-                                        <i class="bi bi-music-note"></i>
-                                        Louvor
-                                    </a></li>
-                                <li><a class="dropdown-item" href="danca.html">
-                                        <i class="bi bi-person-arms-up"></i>
-                                        Dança
-                                    </a></li>
-                                <li><a class="dropdown-item" href="kids.html">
-                                        <i class="bi bi-balloon"></i>
-                                        Kids
-                                    </a></li>
-                                <li><a class="dropdown-item" href="diaconato.html">
-                                        <i class="bi bi-shield-check"></i>
-                                        Diaconato
-                                    </a></li>
-                                <li><a class="dropdown-item" href="midia.html">
-                                        <i class="bi bi-camera-video"></i>
-                                        Mídia
-                                    </a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-journal-text"></i>
-                                Postagens
-                            </a>
-                        </li>
-                    </ul>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav gap-4">
+            <li class="nav-item">
+              <a class="nav-link " href="sobre.html">
+                <i class="bi bi-building"></i>
+                Sobre
+              </a>
+            <li class="nav-item">
+              <a class="nav-link " href="celulas.html">
+                <i class="bi bi-people"></i>
+                Células
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="extraordinario.html" role="button"
+                aria-expanded="false">
+                <i class="bi bi-star"></i>
+                Extraordinário
+              </a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="eventos.html">
+                <i class="bi bi-calendar-event"></i>
+                Eventos
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-heart"></i>
+                Ministérios
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="louvor.html">
+                    <i class="bi bi-music-note"></i>
+                    Louvor
+                  </a></li>
+                <li><a class="dropdown-item" href="danca.html">
+                    <i class="bi bi-person-arms-up"></i>
+                    Dança
+                  </a></li>
+                <li><a class="dropdown-item" href="kids.html">
+                    <i class="bi bi-balloon"></i>
+                    Kids
+                  </a></li>
+                <li><a class="dropdown-item" href="diaconato.html">
+                    <i class="bi bi-shield-check"></i>
+                    Diaconato
+                  </a></li>
+                <li><a class="dropdown-item" href="midia.html">
+                    <i class="bi bi-camera-video"></i>
+                    Mídia
+                  </a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <i class="bi bi-journal-text"></i>
+                Postagens
+              </a>
+            </li>
+          </ul>
 
-                    <div class="d-flex ms-auto">
-                        <a href="login.html" class="neon-btn">
-                            <i class="bi bi-person"></i>
-                            Login
+          <div class="d-flex ms-auto">
+            <a href="login.html" class="neon-btn">
+              <i class="bi bi-person"></i>
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="py-5 mt-5" style="width: 200px;"></div>
+
+
+     <div class="header-section">
+        <div class="container">
+            <div class=" align-items-center">
+                <div class=" text-center">
+                    <h1 class="section-title">Nossos Cultos</h1>
+                    <p class="section-subtitle">Acompanhe as mensagens e momentos especiais dos nossos encontros de sábado e domingo</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <i class="fas fa-praying-hands fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">48</span>
+                        <span class="stat-label">Cultos este ano</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">320</span>
+                        <span class="stat-label">Participantes médios</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Séries de pregação</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">89</span>
+                        <span class="stat-label">Horas de adoração</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="filter-tabs text-center">
+                    <button class="filter-btn active">Todos os Cultos</button>
+                    <button class="filter-btn">Sábado</button>
+                    <button class="filter-btn">Domingo</button>
+                    <button class="filter-btn">Especiais</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Featured Post -->
+                <div class="featured-post">
+                    <div class="featured-image d-flex align-items-center justify-content-center">
+                        <div class="post-category">Culto Domingo</div>
+                        <i class="fas fa-church fa-4x text-muted"></i>
+                    </div>
+                    <div class="p-4">
+                        <div class="post-date">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            Domingo, 13 de Junho de 2025
+                        </div>
+                        <h2 class="post-title">A Fé que Move Montanhas: Uma Reflexão sobre Confiança</h2>
+                        <p class="post-excerpt">
+                            No culto de domingo, exploramos como a fé genuína pode transformar não apenas nossas circunstâncias, 
+                            mas principalmente nossos corações. Uma mensagem poderosa sobre confiar em Deus mesmo nos momentos 
+                            mais desafiadores da vida.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div class="text-muted">
+                                <i class="fas fa-user me-2"></i>Pastor João Silva
+                            </div>
+                            <div class="text-muted">
+                                <i class="fas fa-clock me-2"></i>45 min
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Posts Grid -->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="post-card">
+                            <div class="post-image d-flex align-items-center justify-content-center">
+                                <div class="post-category">Culto Sábado</div>
+                                <i class="fas fa-bible fa-3x text-muted"></i>
+                            </div>
+                            <div class="p-3">
+                                <div class="post-date">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    Sábado, 12 de Junho de 2025
+                                </div>
+                                <h3 class="post-title">Esperança em Tempos Difíceis</h3>
+                                <p class="post-excerpt">
+                                    Uma reflexão sobre como manter a esperança viva mesmo diante das adversidades...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="post-card">
+                            <div class="post-image d-flex align-items-center justify-content-center">
+                                <div class="post-category">Culto Domingo</div>
+                                <i class="fas fa-cross fa-3x text-muted"></i>
+                            </div>
+                            <div class="p-3">
+                                <div class="post-date">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    Domingo, 6 de Junho de 2025
+                                </div>
+                                <h3 class="post-title">O Amor de Deus em Ação</h3>
+                                <p class="post-excerpt">
+                                    Como podemos demonstrar o amor divino através de nossas ações diárias...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="post-card">
+                            <div class="post-image d-flex align-items-center justify-content-center">
+                                <div class="post-category">Especial</div>
+                                <i class="fas fa-heart fa-3x text-muted"></i>
+                            </div>
+                            <div class="p-3">
+                                <div class="post-date">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    Domingo, 30 de Maio de 2025
+                                </div>
+                                <h3 class="post-title">Culto das Mães - Gratidão e Bênção</h3>
+                                <p class="post-excerpt">
+                                    Um culto especial dedicado a honrar todas as mães da nossa comunidade...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="post-card">
+                            <div class="post-image d-flex align-items-center justify-content-center">
+                                <div class="post-category">Culto Sábado</div>
+                                <i class="fas fa-dove fa-3x text-muted"></i>
+                            </div>
+                            <div class="p-3">
+                                <div class="post-date">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    Sábado, 29 de Maio de 2025
+                                </div>
+                                <h3 class="post-title">Paz Interior através da Oração</h3>
+                                <p class="post-excerpt">
+                                    Descobrindo como a oração sincera pode trazer paz verdadeira ao coração...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-4">
+                    <button class="load-more-btn">
+                        <i class="fas fa-plus me-2"></i>Carregar Mais Cultos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Próximos Cultos -->
+                <div class="sidebar-widget">
+                    <h4 class="widget-title">Próximos Cultos</h4>
+                    <div class="upcoming-event">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="event-date">SAB 19/06</span>
+                            <span class="text-muted">19:30</span>
+                        </div>
+                        <h6 class="mb-1">Série: Salmos de Esperança</h6>
+                        <small class="text-muted">Pastor Maria Santos</small>
+                    </div>
+                    <div class="upcoming-event">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="event-date">DOM 20/06</span>
+                            <span class="text-muted">10:00</span>
+                        </div>
+                        <h6 class="mb-1">Culto da Família</h6>
+                        <small class="text-muted">Pastor João Silva</small>
+                    </div>
+                    <div class="upcoming-event">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="event-date">SAB 26/06</span>
+                            <span class="text-muted">19:30</span>
+                        </div>
+                        <h6 class="mb-1">Noite de Adoração</h6>
+                        <small class="text-muted">Ministério de Louvor</small>
+                    </div>
+                </div>
+
+                <!-- Séries Atuais -->
+                <div class="sidebar-widget">
+                    <h4 class="widget-title">Séries em Andamento</h4>
+                    <div class="mb-3">
+                        <h6 class="mb-1">Salmos de Esperança</h6>
+                        <small class="text-muted">4 de 8 mensagens | Sábados</small>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar" style="width: 50%; background-color: var(--accent-gold);"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="mb-1">Vida em Comunidade</h6>
+                        <small class="text-muted">2 de 6 mensagens | Domingos</small>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar" style="width: 33%; background-color: var(--accent-warm);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links Úteis -->
+                <div class="sidebar-widget">
+                    <h4 class="widget-title">Recursos</h4>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-download me-2"></i>Áudios dos Cultos
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-book me-2"></i>Estudos Bíblicos
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-calendar me-2"></i>Calendário Completo
                         </a>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </div>
 
-   
 
     </main>
 
@@ -155,7 +398,7 @@
     <!-- Scripts Bootstrap e Vanta -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="js/eventos.js"></script>
+    <script src="js/postagens.js"></script>
 
 
 </body>
