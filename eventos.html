@@ -120,25 +120,10 @@
             <div class="header-card p-4 mb-4">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <h1 class="title-gradient mb-2">Calendário de Eventos</h1>
+                        <h1 class=" mb-2">Calendário de Eventos</h1>
                         <p class="text-muted mb-0">Hoje: <span id="today-date"></span></p>
                     </div>
-                    <div class="col-md-6">
-                        <div
-                            class="d-flex justify-content-md-end justify-content-center align-items-center gap-3 mt-3 mt-md-0">
-                            <button class="btn btn-gradient nav-btn" onclick="previousMonth()">
-                                <i class="bi bi-chevron-left"></i>
-                            </button>
-                            <button class="btn btn-gradient nav-btn" onclick="nextMonth()">
-                                <i class="bi bi-chevron-right"></i>
-                            </button>
-                            <div class="view-selector d-flex">
-                                <button class="view-btn active">Mês</button>
-                                <button class="view-btn">Semana</button>
-                                <button class="view-btn">Dia</button>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -148,12 +133,23 @@
                 <div class="col-xl-8">
                     <div class="card glass-card border-0 rounded-4">
                         <div class="card-body p-4">
+
                             <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
-                                <h2 class="h3 mb-0" id="month-year"></h2>
+                                <div class="d-flex align-items-center gap-3">
+                                    <h2 class="h3 mb-0" id="month-year"></h2>
+                                    <button class="btn btn-gradient nav-btn" onclick="previousMonth()">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </button>
+                                    <button class="btn btn-gradient nav-btn" onclick="nextMonth()">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </div>
                             </div>
 
+
+
                             <div class="calendar-grid">
-                                <!-- Day Headers -->
+                                <!-- Cabeçalhos dos dias -->
                                 <div class="day-header">Dom</div>
                                 <div class="day-header">Seg</div>
                                 <div class="day-header">Ter</div>
@@ -162,9 +158,9 @@
                                 <div class="day-header">Sex</div>
                                 <div class="day-header">Sáb</div>
 
-                                <!-- Calendar Days -->
-                                <div id="calendar-days"></div>
+                                <!-- Aqui os dias são inseridos diretamente pelo JavaScript -->
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -293,54 +289,7 @@
                                         Próximos Eventos
                                     </h5>
                                     <div class="upcoming-events" style="max-height: 400px; overflow-y: auto;">
-                                        <div class="upcoming-event p-3 mb-3">
-                                            <div class="d-flex gap-3">
-                                                <div class="text-center" style="min-width: 50px;">
-                                                    <div class="upcoming-day">15</div>
-                                                    <div class="upcoming-month">Jun</div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Conferência de Jovens</h6>
-                                                    <small class="text-muted">Sábado, 14:00 - Auditório
-                                                        Principal</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="upcoming-event p-3 mb-3">
-                                            <div class="d-flex gap-3">
-                                                <div class="text-center" style="min-width: 50px;">
-                                                    <div class="upcoming-day">22</div>
-                                                    <div class="upcoming-month">Jun</div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Batismo</h6>
-                                                    <small class="text-muted">Domingo, 16:00 - Batistério</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="upcoming-event p-3 mb-3">
-                                            <div class="d-flex gap-3">
-                                                <div class="text-center" style="min-width: 50px;">
-                                                    <div class="upcoming-day">29</div>
-                                                    <div class="upcoming-month">Jun</div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Festa Junina</h6>
-                                                    <small class="text-muted">Sábado, 18:00 - Quadra Coberta</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="upcoming-event p-3">
-                                            <div class="d-flex gap-3">
-                                                <div class="text-center" style="min-width: 50px;">
-                                                    <div class="upcoming-day">05</div>
-                                                    <div class="upcoming-month">Jul</div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Retiro de Casais</h6>
-                                                    <small class="text-muted">Sexta a Domingo - Chácara
-                                                        Esperança</small>
-                                                </div>
+                                        
                                             </div>
                                         </div>
                                     </div>

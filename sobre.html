@@ -29,11 +29,11 @@
 
     <!-- Navbar -->
     <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg" id="mainNavbar">
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
       <div class="container">
-          <a class="navbar-brand neon-logo" href="index.html">
-              <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
-            </a>
+        <a class="navbar-brand neon-logo" href="index.html">
+          <img src="imagens/download.png" alt="Logo da MIRE" class="img-fluid" style="max-width: 60px;">
+        </a>
 
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -55,12 +55,11 @@
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="extraordinario.html" role="button"
-                aria-expanded="false">
+              <a class="nav-link " href="extraordinario.html" role="button" aria-expanded="false">
                 <i class="bi bi-star"></i>
                 Extraordinário
               </a>
-              
+
             </li>
             <li class="nav-item">
               <a class="nav-link" href="eventos.html">
@@ -153,20 +152,26 @@
                   de Cristo de
                   forma prática e relacional, estruturada em pequenos grupos chamados células, onde os membros se
                   apoiam, crescem espiritualmente e compartilham a mensagem de Cristo.<br><br>
-                  • Visão: Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua Palavra, conduzindo
+                  <hr>
+                  • Visão: Ser uma igreja discipuladora e multiplicadora, comprometida com Deus e Sua Palavra,
+                  conduzindo
                   pessoas à plena comunhão com Cristo e ao serviço ao próximo. Transmitindo as escrituras de forma
                   genuína, levantando um povo adorador, fazendo de cada membro um discípulo de Cristo e de cada casa uma
                   extensão da igreja. Levando ao retorno da origem onde todos são a imagem e semelhança de Deus (Gn1:26)
 
                 </p>
+                <hr>
 
                 <p class="fs-5">• Missão: Direcionar pessoas a um relacionamento saudável com Deus e com o próximo,
                   fortalecendo o
                   conhecimento das Escrituras e promovendo a transformação de vidas, sendo uma igreja renovada pelo
                   Espírito Santo.<br><br>
+                  <hr>
 
-                  • Valores: Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando crescer de modo
+                  • Valores: Discipulado, ensino, comunhão, evangelismo, serviço e voluntariado, buscando crescer de
+                  modo
                   relevante para o Reino de Deus, através dos pilares Ganhar, consolidar, discipular e enviar.<br><br>
+                  <hr>
 
                   • Propósito: Ser uma comunidade acolhedora e discipuladora, onde cada pessoa encontra suporte,
                   crescimento espiritual e encorajamento para viver o evangelho. Multiplicamos vidas transformadas por
@@ -237,91 +242,112 @@
       </div>
     </div>
 
-<section class="container my-5">
-  <div class="card custom-card p-5 fade-in">
-    <h2 class="text-center display-6 mb-5">Nossa Comunidade</h2>
+    <section class="container my-5">
+      <div class="card card1 custom-card p-5 fade-in">
+        <h2 class="text-center section-title display-5 mb-5">
+          ✨ Nossa Comunidade ✨
+        </h2>
 
-    <!-- Botões -->
-    <div class="d-flex justify-content-between mb-3">
-      <button class="btn btn-outline-secondary" onclick="scrollGaleria(-1)">&#8592; Anterior</button>
-      <div>
-        <label for="uploadInput" class="btn btn-outline-primary">
-          <i class="bi bi-upload"></i> Upload de Foto
-        </label>
-        <input type="file" id="uploadInput" accept="image/*" style="display: none;" onchange="uploadImagem()">
-      </div>
-      <button class="btn btn-outline-secondary" onclick="scrollGaleria(1)">Próximo &#8594;</button>
-    </div>
-
-    <!-- Carrossel horizontal -->
-    <div id="galeriaScroll" class="d-flex overflow-auto flex-nowrap">
-      
-</section>
-
-    <!-- Contato -->
-    <section class="contact-section py-5">
-      <div class="container">
-        <div class="text-center mb-5">
-          <h2 class="display-6 mb-3">Venha nos Visitar</h2>
-          <p class="lead">Você é sempre bem-vindo em nossa igreja. Venha conhecer nossa comunidade!</p>
+        <!-- Controles de Navegação -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <button class="btn nav-btn" onclick="scrollGaleria(-1)">
+            <i class="fas fa-chevron-left me-2"></i>Anterior
+          </button>
+          <div class="text-center">
+            <small class="text-light opacity-75">Arraste para navegar</small>
+          </div>
+          <button class="btn nav-btn" onclick="scrollGaleria(1)">
+            Próximo<i class="fas fa-chevron-right ms-2"></i>
+          </button>
         </div>
 
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="card contact-card h-100 text-center p-4">
-              <div class="card-body">
-                <h4 class="h5 mb-3">
-                  <i class="bi bi-geo-alt fs-3 d-block mb-2"></i>
-                  Endereço
-                </h4>
-                <p class="mb-0">
-                  Rua da Esperança, 123<br>
-                  Centro - Sua Cidade<br>
-                  CEP: 12345-678
-                </p>
-              </div>
+        <!-- Galeria Horizontal -->
+        <div id="galeriaScroll" class="gallery-scroll d-flex overflow-auto flex-nowrap gap-4 pb-3">
+
+          <!-- Item 1 - Páscoa -->
+          <div class="card  gallery-card gallery-item">
+            <div class="badge-tag">Páscoa 2024</div>
+            <img src="imagens/Pascoa.jpg" class="card-img-top" alt="Celebração da Páscoa">
+            <div class="card-overlay">
+              <h6 class="mb-1">Páscoa Comunitária</h6>
+              <p class="small mb-0">Uma celebração cheia de alegria e esperança</p>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="card contact-card h-100 text-center p-4">
-              <div class="card-body">
-                <h4 class="h5 mb-3">
-                  <i class="bi bi-telephone fs-3 d-block mb-2"></i>
-                  Contato
-                </h4>
-                <p class="mb-0">
-                  Telefone: (11) 1234-5678<br>
-                  WhatsApp: (11) 99999-8888<br>
-                  Email: contato@igreja.com
-                </p>
-              </div>
+          <!-- Item 2 - Encontro de Jovens -->
+          <div class="card gallery-card gallery-item">
+            <div class="badge-tag">Juventude</div>
+            <img src="imagens/aaa.jpg" class="card-img-top"
+              alt="Encontro de Jovens">
+            <div class="card-overlay">
+              <h6 class="mb-1">Energia Jovem</h6>
+              <p class="small mb-0">Fortalecendo laços e compartilhando experiências</p>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="card contact-card h-100 text-center p-4">
-              <div class="card-body">
-                <h4 class="h5 mb-3">
-                  <i class="bi bi-share fs-3 d-block mb-2"></i>
-                  Redes Sociais
-                </h4>
-                <p class="mb-0">
-                  Facebook: /nossaigreja<br>
-                  Instagram: @nossa_igreja<br>
-                  YouTube: Nossa Igreja
-                </p>
-              </div>
+          <!-- Item 3 - Retiro Espiritual -->
+          <div class="card gallery-card gallery-item">
+            <div class="badge-tag">Retiro</div>
+            <img src="imagens/adc.jpg" class="card-img-top"
+              alt="Retiro Espiritual">
+            <div class="card-overlay">
+              <h6 class="mb-1">Encontro com o Sagrado</h6>
+              <p class="small mb-0">Tempo dedicado à oração e meditação</p>
             </div>
+          </div>
+
+          <!-- Item 4 - Confraternização -->
+          <div class="card gallery-card gallery-item">
+            <div class="badge-tag">Comunidade</div>
+            <img src="imagens/pr.jpg" class="card-img-top"
+              alt="Confraternização">
+            <div class="card-overlay">
+              <h6 class="mb-1">Família Unida</h6>
+              <p class="small mb-0">Celebrando a comunhão e a amizade</p>
+            </div>
+          </div>
+
+          <!-- Item 5 - Ação Social -->
+          <div class="card gallery-card gallery-item">
+            <div class="badge-tag">Solidariedade</div>
+            <img src="https://via.placeholder.com/280x200/E91E63/white?text=Ação+Social" class="card-img-top"
+              alt="Ação Social">
+            <div class="card-overlay">
+              <h6 class="mb-1">Mãos que Ajudam</h6>
+              <p class="small mb-0">Levando esperança para quem precisa</p>
+            </div>
+          </div>
+
+          <!-- Item 6 - Culto Especial -->
+          <div class="card gallery-card gallery-item">
+            <div class="badge-tag">Adoração</div>
+            <img src="https://via.placeholder.com/280x200/9C27B0/white?text=Culto" class="card-img-top"
+              alt="Culto Especial">
+            <div class="card-overlay">
+              <h6 class="mb-1">Adoração Verdadeira</h6>
+              <p class="small mb-0">Corações unidos em louvor</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Indicadores de Progresso -->
+        <div class="text-center mt-4">
+          <div class="d-inline-flex gap-2">
+            <div class="bg-light rounded-pill" style="width: 30px; height: 4px; opacity: 0.7;"></div>
+            <div class="bg-light rounded-pill" style="width: 30px; height: 4px; opacity: 0.4;"></div>
+            <div class="bg-light rounded-pill" style="width: 30px; height: 4px; opacity: 0.4;"></div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Botão Flutuante -->
-    <button class="btn btn-floating" onclick="scrollToTop()">
-      <i class="bi bi-arrow-up"></i>
-    </button>
+      </div>
+
+    
+
+      <!-- Botão Flutuante -->
+      <button class="btn btn-floating" onclick="scrollToTop()">
+        <i class="bi bi-arrow-up"></i>
+      </button>
 
 
   </main>
