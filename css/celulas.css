@@ -1,16 +1,16 @@
 :root {
             --primary-color: #6c757d;
             --secondary-color: #495057;
-            --light-gray: #f8f9fa;
+            --light-gray: #254D70;
             --medium-gray: #e9ecef;
             --dark-gray: #343a40;
-            --accent-color: #adb5bd;
+            --accent-color: #213555;
         }
 
                           body { 
-  background-color: #393E46;
+  background-color: #000;
   color: #fff;
-  background-image: linear-gradient(#393E46, rgba(0, 0, 0, 0.3)),
+  background-image: linear-gradient(#000, rgba(0, 0, 0, 0.3)),
    url('../imagens/download.png');
   background-size: contain;
   background-position: center;
